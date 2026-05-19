@@ -1,0 +1,968 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset77 ZapfDingbatsITC;\f2\fnil\fcharset0 AppleColorEmoji;
+\f3\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+<meta charset="UTF-8">\
+<meta name="viewport" content="width=device-width, initial-scale=1.0">\
+<title>House of Velara \'97 Join The Circle</title>\
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">\
+<style>\
+  :root \{\
+    --noir: #2D0A14;\
+    --burg: #8B1A2A;\
+    --rouge: #B03040;\
+    --ember: #C9824A;\
+    --blush: #F5C8B0;\
+    --ivory: #FAF4EE;\
+    --rose: #C0A898;\
+    --cream: #F5EDE8;\
+    --soft: #FDF9F5;\
+    --mid: #6A4A4A;\
+  \}\
+  * \{ margin: 0; padding: 0; box-sizing: border-box; \}\
+  body \{ background: var(--soft); font-family: 'Lato', sans-serif; min-height: 100vh; display: flex; justify-content: center; \}\
+  .page \{ width: 100%; max-width: 660px; display: flex; flex-direction: column; \}\
+\
+  /* HERO */\
+  .hero \{ background: var(--noir); padding: 56px 48px 48px; text-align: center; position: relative; overflow: hidden; \}\
+  .hero::after \{ content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--ember), transparent); \}\
+  .hero-star \{ font-size: 17px; color: var(--ember); letter-spacing: 10px; margin-bottom: 24px; \}\
+  .hero-title \{ font-family: 'Cormorant Garamond', serif; font-size: 50px; font-weight: 300; color: white; line-height: 1.05; letter-spacing: 0.04em; margin-bottom: 4px; \}\
+  .hero-title em \{ font-style: italic; color: var(--ember); \}\
+  .hero-rule \{ width: 40px; height: 1px; background: var(--ember); margin: 22px auto; \}\
+  .hero-sub \{ font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--rose); line-height: 1.6; margin-bottom: 24px; \}\
+  .hero-tag \{ display: inline-block; background: rgba(139,26,42,0.5); border: 1px solid var(--burg); color: var(--blush); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 8px 22px; border-radius: 20px; \}\
+\
+  /* LETTER */\
+  .letter \{ background: white; padding: 44px 48px 40px; border-bottom: 1px solid #EDE0D8; \}\
+  .letter p \{ font-size: 15px; line-height: 1.9; color: #3A2A2A; margin-bottom: 14px; \}\
+  .letter p:last-of-type \{ margin-bottom: 0; \}\
+  .letter em \{ font-style: italic; color: var(--burg); \}\
+  .letter-sig \{ margin-top: 24px; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--burg); \}\
+\
+  /* PROGRESS */\
+  .progress-bar-wrap \{ background: white; padding: 16px 48px 0; border-bottom: 1px solid #EDE0D8; position: sticky; top: 0; z-index: 10; \}\
+  .progress-steps \{ display: flex; justify-content: space-between; margin-bottom: 12px; \}\
+  .progress-step \{ font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #C0B0A8; transition: color 0.3s; \}\
+  .progress-step.active \{ color: var(--burg); \}\
+  .progress-step.done \{ color: var(--ember); \}\
+  .progress-track \{ height: 3px; background: #EDE0D8; border-radius: 2px; overflow: hidden; \}\
+  .progress-fill \{ height: 100%; background: linear-gradient(90deg, var(--burg), var(--ember)); border-radius: 2px; transition: width 0.4s ease; width: 0%; \}\
+\
+  /* FORM PAGES */\
+  .form-page \{ display: none; background: white; padding: 44px 48px 48px; animation: fadeIn 0.3s ease; \}\
+  .form-page.active \{ display: block; \}\
+  @keyframes fadeIn \{ from \{ opacity: 0; transform: translateY(8px); \} to \{ opacity: 1; transform: translateY(0); \} \}\
+  .page-eyebrow \{ font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); margin-bottom: 8px; \}\
+  .page-title \{ font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--noir); margin-bottom: 8px; line-height: 1.2; \}\
+  .page-hint \{ font-size: 14px; color: var(--rose); margin-bottom: 32px; line-height: 1.65; font-style: italic; \}\
+\
+  /* FIELDS */\
+  .field \{ margin-bottom: 22px; \}\
+  .field:last-of-type \{ margin-bottom: 0; \}\
+  .field-label \{ display: block; font-size: 13px; font-weight: 700; color: var(--noir); margin-bottom: 8px; line-height: 1.4; \}\
+  .field-label .opt \{ font-weight: 300; color: var(--rose); font-style: italic; font-size: 12px; \}\
+  .field-sub \{ font-size: 12px; color: #9A8A82; margin-bottom: 10px; font-style: italic; line-height: 1.5; \}\
+  input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"], select, textarea \{\
+    width: 100%; padding: 13px 16px; background: var(--soft); border: 1px solid #DDD0C8; border-radius: 4px;\
+    font-family: 'Lato', sans-serif; font-size: 14px; color: var(--noir); transition: border-color 0.2s, background 0.2s; outline: none; appearance: none;\
+  \}\
+  input:focus, select:focus, textarea:focus \{ border-color: var(--burg); background: white; \}\
+  input::placeholder, textarea::placeholder \{ color: #C0B0A8; font-style: italic; \}\
+  select \{ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B1A2A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; \}\
+  textarea \{ resize: vertical; min-height: 100px; line-height: 1.7; \}\
+  .two-col \{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; \}\
+  .three-col \{ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; \}\
+\
+  /* PILL CHOICES */\
+  .pill-wrap \{ display: flex; flex-wrap: wrap; gap: 9px; \}\
+  .pill-item \{ position: relative; \}\
+  .pill-item input \{ position: absolute; opacity: 0; width: 0; height: 0; \}\
+  .pill-lbl \{ display: block; padding: 10px 18px; background: var(--soft); border: 1.5px solid #DDD0C8; border-radius: 28px; font-size: 13px; color: #5A4A4A; cursor: pointer; transition: all 0.15s; user-select: none; white-space: nowrap; \}\
+  .pill-item input:checked + .pill-lbl \{ background: var(--cream); border-color: var(--burg); color: var(--burg); font-weight: 700; \}\
+  .pill-lbl:hover \{ border-color: var(--rose); \}\
+\
+  /* CARD CHOICES */\
+  .card-wrap \{ display: flex; flex-direction: column; gap: 10px; \}\
+  .card-item \{ position: relative; \}\
+  .card-item input \{ position: absolute; opacity: 0; width: 0; height: 0; \}\
+  .card-lbl \{ display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; background: var(--soft); border: 1.5px solid #DDD0C8; border-radius: 8px; cursor: pointer; transition: all 0.15s; user-select: none; \}\
+  .card-item input:checked + .card-lbl \{ background: var(--cream); border-color: var(--burg); \}\
+  .card-dot \{ width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #C0A898; flex-shrink: 0; margin-top: 1px; transition: all 0.15s; \}\
+  .card-item input:checked + .card-lbl .card-dot \{ background: var(--burg); border-color: var(--burg); box-shadow: inset 0 0 0 4px white; \}\
+  .card-text \{ flex: 1; \}\
+  .card-strong \{ font-size: 14px; font-weight: 700; color: var(--noir); display: block; margin-bottom: 3px; \}\
+  .card-desc \{ font-size: 12px; color: #8A7A7A; line-height: 1.5; font-style: italic; \}\
+\
+  /* CHECKBOX CARDS */\
+  .check-wrap \{ display: flex; flex-direction: column; gap: 8px; \}\
+  .check-item \{ position: relative; \}\
+  .check-item input[type="checkbox"] \{ position: absolute; opacity: 0; width: 0; height: 0; \}\
+  .check-lbl \{ display: flex; align-items: center; gap: 12px; padding: 13px 16px; background: var(--soft); border: 1.5px solid #DDD0C8; border-radius: 6px; cursor: pointer; transition: all 0.15s; font-size: 13px; color: #3A2A2A; user-select: none; \}\
+  .check-item input:checked + .check-lbl \{ background: var(--cream); border-color: var(--burg); color: var(--burg); font-weight: 700; \}\
+  .check-box \{ width: 20px; height: 20px; border-radius: 4px; border: 1.5px solid #C0A898; flex-shrink: 0; transition: all 0.15s; position: relative; background: white; \}\
+  .check-item input:checked + .check-lbl .check-box \{ background: var(--burg); border-color: var(--burg); \}\
+  .check-item input:checked + .check-lbl .check-box::after \{ content: ''; position: absolute; top: 3px; left: 5px; width: 8px; height: 5px; border-left: 2px solid white; border-bottom: 2px solid white; transform: rotate(-45deg); \}\
+\
+  /* CONSENT */\
+  .consent-list \{ display: flex; flex-direction: column; gap: 14px; \}\
+  .consent-row \{ display: flex; gap: 12px; align-items: flex-start; \}\
+  .consent-chk \{ width: 19px; height: 19px; border: 1.5px solid #C0A898; border-radius: 4px; flex-shrink: 0; margin-top: 2px; appearance: none; background: white; cursor: pointer; transition: all 0.15s; position: relative; \}\
+  .consent-chk:checked \{ background: var(--burg); border-color: var(--burg); \}\
+  .consent-chk:checked::after \{ content: ''; position: absolute; top: 2px; left: 4px; width: 9px; height: 5px; border-left: 2px solid white; border-bottom: 2px solid white; transform: rotate(-45deg); \}\
+  .consent-txt \{ font-size: 13px; color: #6A5A5A; line-height: 1.7; \}\
+\
+  /* NAV BUTTONS */\
+  .nav-row \{ display: flex; justify-content: space-between; align-items: center; margin-top: 36px; gap: 16px; \}\
+  .btn-back \{ background: none; border: 1.5px solid #DDD0C8; color: var(--rose); font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 700; padding: 14px 24px; border-radius: 4px; cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em; \}\
+  .btn-back:hover \{ border-color: var(--rose); color: var(--mid); \}\
+  .btn-next, .btn-submit \{ flex: 1; background: var(--burg); color: white; font-family: 'Lato', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; padding: 16px 28px; border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; \}\
+  .btn-next:hover, .btn-submit:hover \{ background: var(--rouge); \}\
+  .btn-submit \{ background: var(--noir); \}\
+  .btn-submit:hover \{ background: var(--burg); \}\
+\
+  /* SUCCESS */\
+  .success \{ display: none; background: var(--noir); padding: 64px 48px; text-align: center; flex-direction: column; align-items: center; \}\
+  .success.show \{ display: flex; \}\
+  .suc-star \{ font-size: 22px; color: var(--ember); letter-spacing: 8px; margin-bottom: 28px; \}\
+  .suc-greeting \{ font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--rose); margin-bottom: 10px; \}\
+  .suc-title \{ font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; color: white; line-height: 1.1; margin-bottom: 20px; \}\
+  .suc-title em \{ color: var(--ember); font-style: italic; \}\
+  .suc-text \{ font-size: 15px; color: var(--blush); line-height: 1.85; max-width: 420px; margin-bottom: 40px; \}\
+  .suc-steps \{ display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 400px; margin-bottom: 40px; \}\
+  .suc-step \{ display: flex; gap: 16px; align-items: flex-start; text-align: left; padding: 16px 20px; background: rgba(139,26,42,0.25); border: 1px solid rgba(139,26,42,0.45); border-radius: 8px; \}\
+  .suc-n \{ font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--ember); line-height: 1; flex-shrink: 0; \}\
+  .suc-t \{ font-size: 13px; color: var(--blush); line-height: 1.65; \}\
+  .suc-identity \{ font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic; color: var(--ember); \}\
+\
+  /* FOOTER */\
+  .foot \{ background: var(--noir); padding: 20px 32px; text-align: center; \}\
+  .foot p \{ font-size: 11px; color: #5A3A4A; \}\
+\
+  /* BIRTHDAY */\
+  .bday-hint \{ font-size: 11px; color: var(--rose); font-style: italic; margin-top: 6px; \}\
+\
+  @media (max-width: 520px) \{\
+    .hero, .letter, .form-page \{ padding-left: 24px; padding-right: 24px; \}\
+    .progress-bar-wrap \{ padding-left: 24px; padding-right: 24px; \}\
+    .two-col, .three-col \{ grid-template-columns: 1fr; \}\
+    .hero-title \{ font-size: 38px; \}\
+    .page-title \{ font-size: 24px; \}\
+  \}\
+</style>\
+</head>\
+<body>\
+<div class="page">\
+\
+  <!-- HERO -->\
+  <div class="hero">\
+    <div class="hero-star">
+\f1 \uc0\u10022 
+\f0  
+\f1 \uc0\u10022 
+\f0  
+\f1 \uc0\u10022 
+\f0 </div>\
+    <div class="hero-title">House of <em>Velara</em></div>\
+    <div class="hero-rule"></div>\
+    <div class="hero-sub">"You don't find your sisters.<br>You come home to them."</div>\
+    <div class="hero-tag">The sisterhood you deserve.</div>\
+  </div>\
+\
+  <!-- LETTER -->\
+  <div class="letter">\
+    <p>Hey babe, I'm so glad you found us.</p>\
+    <p>I'm not going to pitch you anything. I just want to tell you who we are, in plain words, before you fill this in.</p>\
+    <p>House of Velara is a <em>sisterhood</em>. Not a brand. Not a subscription. Not a club where you pay and get a tote bag. It is a group of real women who show up for each other \'97 at events, in our community group, in each other's lives.</p>\
+    <p>I built this because I was burned out and alone in the middle of a life that looked fine on the outside. What I needed wasn't another app or workshop. I needed sisters. Women who <em>got it</em> without me having to explain.</p>\
+    <p>This form is not a sign-up form. It is a hello. It takes about 5 minutes. Fill it in honestly \'97 especially the last question. I read every single answer personally. That is not something I say lightly.</p>\
+    <p>And if you're reading this at 11pm with a cup of tea, procrastinating on something, wondering if you'll really fit in here \'97 you will. That feeling is exactly why this place exists.</p>\
+    <p>Welcome home. 
+\f1 \uc0\u10022 
+\f0 </p>\
+    <div class="letter-sig">\'97 The Founder, House of Velara</div>\
+  </div>\
+\
+  <!-- PROGRESS -->\
+  <div class="progress-bar-wrap">\
+    <div class="progress-steps">\
+      <span class="progress-step active" id="ps1">You</span>\
+      <span class="progress-step" id="ps2">Life</span>\
+      <span class="progress-step" id="ps3">Work</span>\
+      <span class="progress-step" id="ps4">Sisterhood</span>\
+      <span class="progress-step" id="ps5">Events</span>\
+      <span class="progress-step" id="ps6">Giving back</span>\
+      <span class="progress-step" id="ps7">Almost done</span>\
+    </div>\
+    <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>\
+  </div>\
+\
+  <!-- PAGE 1: YOU -->\
+  <div class="form-page active" id="page1">\
+    <div class="page-eyebrow">Step 1 of 7</div>\
+    <div class="page-title">First \'97 tell me who you are.</div>\
+    <div class="page-hint">Just the basics. Everything here stays between us.</div>\
+\
+    <div class="two-col">\
+      <div class="field">\
+        <label class="field-label">First name *</label>\
+        <input type="text" id="firstName" placeholder="Your first name" required>\
+      </div>\
+      <div class="field">\
+        <label class="field-label">Last name <span class="opt">(optional)</span></label>\
+        <input type="text" id="lastName" placeholder="Your last name">\
+      </div>\
+    </div>\
+\
+    <div class="field">\
+      <label class="field-label">Your email address *</label>\
+      <div class="field-sub">This is how I'll write to you. I promise I won't flood your inbox.</div>\
+      <input type="email" id="email" placeholder="your@email.com" required>\
+    </div>\
+\
+    <div class="two-col">\
+      <div class="field">\
+        <label class="field-label">Your WhatsApp <span class="opt">(optional)</span></label>\
+        <div class="field-sub">For event reminders and community updates.</div>\
+        <input type="tel" id="whatsapp" placeholder="+1 604 000 0000">\
+      </div>\
+      <div class="field">\
+        <label class="field-label">Your Instagram <span class="opt">(optional)</span></label>\
+        <div class="field-sub">We love cheering you on publicly. 
+\f2 \uc0\u55358 \u56589 
+\f0 </div>\
+        <input type="text" id="instagram" placeholder="@yourhandle">\
+      </div>\
+    </div>\
+\
+    <div class="two-col">\
+      <div class="field">\
+        <label class="field-label">Your city *</label>\
+        <div class="field-sub">So I know where to invite you first.</div>\
+        <input type="text" id="city" placeholder="e.g. Vancouver, BC" required>\
+      </div>\
+      <div class="field">\
+        <label class="field-label">Your birthday 
+\f2 \uc0\u55356 \u57218 
+\f0  <span class="opt">(optional)</span></label>\
+        <div class="field-sub">We do love celebrating YOU.</div>\
+        <div class="two-col" style="gap:10px;">\
+          <select id="bdayMonth">\
+            <option value="" disabled selected>Month</option>\
+            <option>January</option><option>February</option><option>March</option>\
+            <option>April</option><option>May</option><option>June</option>\
+            <option>July</option><option>August</option><option>September</option>\
+            <option>October</option><option>November</option><option>December</option>\
+          </select>\
+          <select id="bdayDay">\
+            <option value="" disabled selected>Day</option>\
+            $\{Array.from(\{length:31\},(_,i)=>`<option>$\{i+1\}</option>`).join('')\}\
+          </select>\
+        </div>\
+        <div class="bday-hint">
+\f1 \uc0\u10022 
+\f0  Yes, we remember. Yes, we celebrate.</div>\
+      </div>\
+    </div>\
+\
+    <div class="field">\
+      <label class="field-label">How did you find House of Velara?</label>\
+      <select id="source">\
+        <option value="" disabled selected>Tell me how you got here...</option>\
+        <option>Instagram</option>\
+        <option>TikTok</option>\
+        <option>A friend told me about you</option>\
+        <option>Facebook</option>\
+        <option>LinkedIn</option>\
+        <option>I came to an event first</option>\
+        <option>Google</option>\
+        <option>I honestly don't remember \'97 I just knew I needed to be here</option>\
+      </select>\
+    </div>\
+\
+    <div class="nav-row">\
+      <button class="btn-next" onclick="goTo(2)">Next \'97 tell me about your life 
+\f3 \uc0\u8594 
+\f0 </button>\
+    </div>\
+  </div>\
+\
+  <!-- PAGE 2: LIFE -->\
+  <div class="form-page" id="page2">\
+    <div class="page-eyebrow">Step 2 of 7</div>\
+    <div class="page-title">Your life right now.</div>\
+    <div class="page-hint">No judgment. No right answers. This is just so we know where you're at and how to meet you there.</div>\
+\
+    <div class="field">\
+      <label class="field-label">Where are you in life right now? *</label>\
+      <div class="field-sub">Pick the one that feels most true today.</div>\
+      <div class="card-wrap">\
+        <div class="card-item">\
+          <input type="radio" name="lifeStage" id="ls1" value="Rebuilding">\
+          <label class="card-lbl" for="ls1">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">I'm rebuilding.</span>\
+              <span class="card-desc">Something broke \'97 or I did. I'm putting myself back together and I need women who understand that without needing me to explain.</span>\
+            </div>\
+          </label>\
+        </div>\
+        <div class="card-item">\
+          <input type="radio" name="lifeStage" id="ls2" value="Thriving but missing depth">\
+          <label class="card-lbl" for="ls2">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">I have a good life \'97 but something's missing.</span>\
+              <span class="card-desc">I'm doing well. And yet I crave something deeper. Something more real than what I have right now.</span>\
+            </div>\
+          </label>\
+        </div>\
+        <div class="card-item">\
+          <input type="radio" name="lifeStage" id="ls3" value="Building something new">\
+          <label class="card-lbl" for="ls3">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">I'm building something new.</span>\
+              <span class="card-desc">A business, a life, a version of myself I haven't fully met yet. I want women around me who are doing the same.</span>\
+            </div>\
+          </label>\
+        </div>\
+        <div class="card-item">\
+          <input type="radio" name="lifeStage" id="ls4" value="In transition">\
+          <label class="card-lbl" for="ls4">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">I'm in transition.</span>\
+              <span class="card-desc">A move, a breakup, a new city, a career change, a new chapter. The ground shifted and I'm finding my footing.</span>\
+            </div>\
+          </label>\
+        </div>\
+        <div class="card-item">\
+          <input type="radio" name="lifeStage" id="ls5" value="Just want sisterhood">\
+          <label class="card-lbl" for="ls5">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">I just want a real sisterhood.</span>\
+              <span class="card-desc">No specific reason. No crisis. I just want women I can call mine. Women who actually show up.</span>\
+            </div>\
+          </label>\
+        </div>\
+        <div class="card-item">\
+          <input type="radio" name="lifeStage" id="ls6" value="All of the above">\
+          <label class="card-lbl" for="ls6">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">Honestly? All of the above.</span>\
+              <span class="card-desc">It is complicated and I am not going to pretend otherwise.</span>\
+            </div>\
+          </label>\
+        </div>\
+      </div>\
+    </div>\
+\
+    <div class="field" style="margin-top: 28px;">\
+      <label class="field-label">What's your relationship status? *</label>\
+      <div class="field-sub">We celebrate all of it \'97 the love stories, the hot messes, the fresh starts, and everything in between. 
+\f2 \uc0\u55357 \u56475 
+\f0 </div>\
+      <div class="pill-wrap">\
+        <div class="pill-item"><input type="radio" name="relStatus" id="r1" value="Single and loving it"><label class="pill-lbl" for="r1">Single and loving it 
+\f2 \uc0\u10024 
+\f0 </label></div>\
+        <div class="pill-item"><input type="radio" name="relStatus" id="r2" value="Single and open to whatever"><label class="pill-lbl" for="r2">Single and open to whatever</label></div>\
+        <div class="pill-item"><input type="radio" name="relStatus" id="r3" value="Moving on"><label class="pill-lbl" for="r3">Moving on 
+\f2 \uc0\u55356 \u57137 
+\f0 </label></div>\
+        <div class="pill-item"><input type="radio" name="relStatus" id="r4" value="In a relationship"><label class="pill-lbl" for="r4">In a relationship 
+\f2 \uc0\u55358 \u56589 
+\f0 </label></div>\
+        <div class="pill-item"><input type="radio" name="relStatus" id="r5" value="Engaged"><label class="pill-lbl" for="r5">Engaged 
+\f2 \uc0\u55357 \u56461 
+\f0 </label></div>\
+        <div class="pill-item"><input type="radio" name="relStatus" id="r6" value="Married"><label class="pill-lbl" for="r6">Married</label></div>\
+        <div class="pill-item"><input type="radio" name="relStatus" id="r7" value="Single mom"><label class="pill-lbl" for="r7">Single mom 
+\f2 \uc0\u55358 \u56705 
+\f0 </label></div>\
+        <div class="pill-item"><input type="radio" name="relStatus" id="r8" value="Married with kids"><label class="pill-lbl" for="r8">Married with kids</label></div>\
+        <div class="pill-item"><input type="radio" name="relStatus" id="r9" value="It's complicated"><label class="pill-lbl" for="r9">It's complicated 
+\f2 \uc0\u55357 \u56837 
+\f0 </label></div>\
+        <div class="pill-item"><input type="radio" name="relStatus" id="r10" value="Prefer not to say"><label class="pill-lbl" for="r10">Rather not say</label></div>\
+      </div>\
+    </div>\
+\
+    <div class="nav-row">\
+      <button class="btn-back" onclick="goTo(1)">
+\f3 \uc0\u8592 
+\f0  Back</button>\
+      <button class="btn-next" onclick="goTo(3)">Next \'97 work & career 
+\f3 \uc0\u8594 
+\f0 </button>\
+    </div>\
+  </div>\
+\
+  <!-- PAGE 3: WORK -->\
+  <div class="form-page" id="page3">\
+    <div class="page-eyebrow">Step 3 of 7</div>\
+    <div class="page-title">What do you do?</div>\
+    <div class="page-hint">We love knowing what each Velara brings to the table \'97 because one day we might connect you with someone who needs exactly what you have.</div>\
+\
+    <div class="field">\
+      <label class="field-label">What do you do for work? *</label>\
+      <input type="text" id="job" placeholder="e.g. Marketing manager, freelance designer, nurse, teacher, runs her own business..." required>\
+    </div>\
+\
+    <div class="field">\
+      <label class="field-label">What industry are you in?</label>\
+      <select id="industry">\
+        <option value="" disabled selected>Pick the closest one...</option>\
+        <option>Technology & Digital</option>\
+        <option>Healthcare & Medicine</option>\
+        <option>Education</option>\
+        <option>Finance & Banking</option>\
+        <option>Marketing & Communications</option>\
+        <option>Creative & Design</option>\
+        <option>Law & Legal</option>\
+        <option>Business & Consulting</option>\
+        <option>Real Estate</option>\
+        <option>Retail & Fashion</option>\
+        <option>Hospitality & Tourism</option>\
+        <option>Beauty & Wellness</option>\
+        <option>Non-profit & Social Impact</option>\
+        <option>Government & Public Sector</option>\
+        <option>Media & Entertainment</option>\
+        <option>Science & Research</option>\
+        <option>I run my own business</option>\
+        <option>I'm between things right now</option>\
+        <option>Other</option>\
+      </select>\
+    </div>\
+\
+    <div class="field">\
+      <label class="field-label">Your LinkedIn profile <span class="opt">(optional)</span></label>\
+      <div class="field-sub">We love celebrating our sisters publicly. Women supporting women \'97 always. 
+\f2 \uc0\u55358 \u56589 
+\f0 </div>\
+      <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourname">\
+    </div>\
+\
+    <div class="field">\
+      <label class="field-label">What's your work situation right now?</label>\
+      <div class="field-sub">This helps us know how to support you \'97 and connect you with the right women.</div>\
+      <div class="check-wrap">\
+        <div class="check-item"><input type="checkbox" id="w1" name="workSit" value="Actively looking for a job or new role"><label class="check-lbl" for="w1"><div class="check-box"></div>I'm actively looking for a job or new role 
+\f2 \uc0\u55357 \u56589 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="w2" name="workSit" value="Looking for clients or projects for my business"><label class="check-lbl" for="w2"><div class="check-box"></div>I'm looking for clients or projects for my business 
+\f2 \uc0\u55357 \u56960 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="w3" name="workSit" value="Open to collaborations with other women"><label class="check-lbl" for="w3"><div class="check-box"></div>Open to collaborations with other women 
+\f2 \uc0\u55358 \u56605 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="w4" name="workSit" value="Building my own business or side project"><label class="check-lbl" for="w4"><div class="check-box"></div>Building my own business or side project 
+\f2 \uc0\u55357 \u56508 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="w5" name="workSit" value="Thinking about a career change"><label class="check-lbl" for="w5"><div class="check-box"></div>Thinking about a career change 
+\f2 \uc0\u55356 \u57137 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="w6" name="workSit" value="Happily settled in my career right now"><label class="check-lbl" for="w6"><div class="check-box"></div>Happily settled in my career right now 
+\f2 \uc0\u10024 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="w7" name="workSit" value="Taking a break or on a career pause"><label class="check-lbl" for="w7"><div class="check-box"></div>Taking a break or on a career pause</label></div>\
+      </div>\
+    </div>\
+\
+    <div class="field">\
+      <label class="field-label">Is there something you're brilliant at that you'd want to bring to this sisterhood someday? <span class="opt">(This one I love.)</span></label>\
+      <div class="field-sub">A skill, a superpower, a thing you know deeply. You might end up leading a workshop, hosting a circle, or just being the woman another Velara needed to find.</div>\
+      <textarea id="skill" placeholder="e.g. I'm a therapist who loves group work. I cook Filipino food from scratch and it's an act of love. I've negotiated six-figure contracts and I want to teach every woman how. I make people feel safe in a room..."></textarea>\
+    </div>\
+\
+    <div class="nav-row">\
+      <button class="btn-back" onclick="goTo(2)">
+\f3 \uc0\u8592 
+\f0  Back</button>\
+      <button class="btn-next" onclick="goTo(4)">Next \'97 about the sisterhood 
+\f3 \uc0\u8594 
+\f0 </button>\
+    </div>\
+  </div>\
+\
+  <!-- PAGE 4: SISTERHOOD -->\
+  <div class="form-page" id="page4">\
+    <div class="page-eyebrow">Step 4 of 7</div>\
+    <div class="page-title">The sisterhood part.</div>\
+    <div class="page-hint">This is the part I'm most excited about. Tell me who you are inside a community.</div>\
+\
+    <div class="field">\
+      <label class="field-label">What are you most drawn to here? *</label>\
+      <div class="field-sub">Tick everything that speaks to you. No limit.</div>\
+      <div class="check-wrap">\
+        <div class="check-item"><input type="checkbox" id="d1" name="drawn" value="Real connection \'97 women who actually show up for each other"><label class="check-lbl" for="d1"><div class="check-box"></div>Real connection \'97 women who actually show up 
+\f1 \uc0\u10022 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d2" name="drawn" value="Wellness \'97 the real kind, not the hustle kind"><label class="check-lbl" for="d2"><div class="check-box"></div>Wellness \'97 the real kind, not the performative kind 
+\f2 \uc0\u55356 \u57151 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d3" name="drawn" value="Mental health \'97 I need a safe space to be honest"><label class="check-lbl" for="d3"><div class="check-box"></div>Mental health \'97 a space where I can be fully honest 
+\f2 \uc0\u55358 \u56800 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d4" name="drawn" value="Career and money \'97 I want to earn more, know more, grow more"><label class="check-lbl" for="d4"><div class="check-box"></div>Career and money \'97 I want to earn more, know more 
+\f2 \uc0\u55357 \u56508 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d5" name="drawn" value="Moving my body with women who aren't competitive"><label class="check-lbl" for="d5"><div class="check-box"></div>Moving my body with women who aren't competitive 
+\f2 \uc0\u55357 \u56490 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d6" name="drawn" value="Fun \'97 I want to laugh more, try more, do more with women I love"><label class="check-lbl" for="d6"><div class="check-box"></div>Fun \'97 I want to laugh more and try new things 
+\f2 \uc0\u55356 \u57225 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d7" name="drawn" value="Retreats and travel \'97 experiences that genuinely change you"><label class="check-lbl" for="d7"><div class="check-box"></div>Retreats and travel \'97 the kind that changes you 
+\f2 \uc0\u9992 \u65039 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d8" name="drawn" value="Being seen and celebrated \'97 my wins, my hard chapters, my ordinary days"><label class="check-lbl" for="d8"><div class="check-box"></div>Being seen and celebrated \'97 for all of it 
+\f2 \uc0\u55358 \u56589 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d9" name="drawn" value="Intimate home gatherings \'97 small, warm, real conversation"><label class="check-lbl" for="d9"><div class="check-box"></div>Intimate home gatherings \'97 small and warm 
+\f2 \uc0\u55356 \u57312 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d10" name="drawn" value="Women + money workshops \'97 because nobody taught us this"><label class="check-lbl" for="d10"><div class="check-box"></div>Women + money workshops \'97 because nobody taught us this 
+\f2 \uc0\u55357 \u56496 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d11" name="drawn" value="Giving back \'97 charitable events, volunteering, doing good together"><label class="check-lbl" for="d11"><div class="check-box"></div>Giving back \'97 charity, volunteering, doing good together 
+\f2 \uc0\u55358 \u56626 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="d12" name="drawn" value="Brand and business collabs \'97 being part of something bigger"><label class="check-lbl" for="d12"><div class="check-box"></div>Brand and business collabs \'97 being part of something bigger 
+\f2 \uc0\u55356 \u57119 
+\f0 </label></div>\
+      </div>\
+    </div>\
+\
+    <div class="field" style="margin-top: 28px;">\
+      <label class="field-label">Have you ever been part of a sorority, sisterhood, or women's community before?</label>\
+      <div class="pill-wrap">\
+        <div class="pill-item"><input type="radio" name="prevCom" id="pc1" value="Yes \'97 and it was everything"><label class="pill-lbl" for="pc1">Yes \'97 and it was everything 
+\f2 \uc0\u55358 \u56589 
+\f0 </label></div>\
+        <div class="pill-item"><input type="radio" name="prevCom" id="pc2" value="Yes \'97 but it didn't feel real"><label class="pill-lbl" for="pc2">Yes \'97 but it didn't feel real</label></div>\
+        <div class="pill-item"><input type="radio" name="prevCom" id="pc3" value="No \'97 this is my first"><label class="pill-lbl" for="pc3">No \'97 this is my first 
+\f1 \uc0\u10022 
+\f0 </label></div>\
+        <div class="pill-item"><input type="radio" name="prevCom" id="pc4" value="I've tried a few and nothing stuck"><label class="pill-lbl" for="pc4">I've tried a few and nothing stuck</label></div>\
+      </div>\
+    </div>\
+\
+    <div class="field" style="margin-top: 24px;">\
+      <label class="field-label">Would you ever open your home for a small Velara gathering? <span class="opt">(optional)</span></label>\
+      <div class="field-sub">Home gatherings are one of the most sacred parts of our community. No pressure \'97 just good to know.</div>\
+      <div class="pill-wrap">\
+        <div class="pill-item"><input type="radio" name="hosting" id="h1" value="Yes I would love that"><label class="pill-lbl" for="h1">Yes, I'd love that 
+\f2 \uc0\u55356 \u57312 
+\f0 </label></div>\
+        <div class="pill-item"><input type="radio" name="hosting" id="h2" value="Maybe one day"><label class="pill-lbl" for="h2">Maybe one day</label></div>\
+        <div class="pill-item"><input type="radio" name="hosting" id="h3" value="Probably not my thing"><label class="pill-lbl" for="h3">Probably not my thing</label></div>\
+        <div class="pill-item"><input type="radio" name="hosting" id="h4" value="Tell me more first"><label class="pill-lbl" for="h4">Tell me more first</label></div>\
+      </div>\
+    </div>\
+\
+    <div class="nav-row">\
+      <button class="btn-back" onclick="goTo(3)">
+\f3 \uc0\u8592 
+\f0  Back</button>\
+      <button class="btn-next" onclick="goTo(5)">Next \'97 events & experiences 
+\f3 \uc0\u8594 
+\f0 </button>\
+    </div>\
+  </div>\
+\
+  <!-- PAGE 5: EVENTS -->\
+  <div class="form-page" id="page5">\
+    <div class="page-eyebrow">Step 5 of 7</div>\
+    <div class="page-title">What kind of experiences are you craving?</div>\
+    <div class="page-hint">Help us build the event calendar of your dreams. Seriously \'97 this is how we know what to run first.</div>\
+\
+    <div class="field">\
+      <label class="field-label">Which events are you most excited about? *</label>\
+      <div class="field-sub">Pick your top ones \'97 as many as you want.</div>\
+      <div class="check-wrap">\
+        <div class="check-item"><input type="checkbox" id="e1" name="events" value="The Velara Gathering \'97 monthly social mixer"><label class="check-lbl" for="e1"><div class="check-box"></div>Monthly social mixers \'97 beautiful rooms, real conversation 
+\f2 \uc0\u55356 \u57207 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e2" name="events" value="Wellness days \'97 sound bath, breathwork, movement"><label class="check-lbl" for="e2"><div class="check-box"></div>Wellness days \'97 sound bath, breathwork, yoga, nourishment 
+\f2 \uc0\u55356 \u57151 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e3" name="events" value="Career and money workshops"><label class="check-lbl" for="e3"><div class="check-box"></div>Career & money workshops \'97 practical, real, no fluff 
+\f2 \uc0\u55357 \u56508 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e4" name="events" value="Speaker evenings \'97 women worth listening to"><label class="check-lbl" for="e4"><div class="check-box"></div>Speaker evenings \'97 women with real stories worth hearing 
+\f2 \uc0\u55356 \u57252 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e5" name="events" value="Fitness adventures \'97 hikes, runs, padel, surfing"><label class="check-lbl" for="e5"><div class="check-box"></div>Fitness adventures \'97 hikes, runs, padel, surfing, climbing 
+\f2 \uc0\u55357 \u56490 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e6" name="events" value="Fun nights \'97 axe throwing, pottery, painting, karaoke"><label class="check-lbl" for="e6"><div class="check-box"></div>Fun nights \'97 axe throwing, pottery, dancing, karaoke 
+\f2 \uc0\u55356 \u57225 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e7" name="events" value="Mental health circles \'97 sharing, breathwork, journaling"><label class="check-lbl" for="e7"><div class="check-box"></div>Mental health circles \'97 sharing, journaling, honest conversation 
+\f2 \uc0\u55358 \u56800 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e8" name="events" value="Celebration events \'97 birthdays, milestones, Galentine's Gala"><label class="check-lbl" for="e8"><div class="check-box"></div>Celebration events \'97 birthdays, milestones, Galentine's Gala 
+\f2 \uc0\u55358 \u56642 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e9" name="events" value="Annual retreat \'97 a weekend that changes everything"><label class="check-lbl" for="e9"><div class="check-box"></div>Annual retreat \'97 a weekend away that changes everything 
+\f2 \uc0\u55356 \u57098 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e10" name="events" value="Intimate home gatherings \'97 small, warm, real"><label class="check-lbl" for="e10"><div class="check-box"></div>Intimate home gatherings \'97 small, warm, zero performance 
+\f2 \uc0\u55356 \u57312 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e11" name="events" value="Group travel and adventures"><label class="check-lbl" for="e11"><div class="check-box"></div>Group travel and international adventures 
+\f2 \uc0\u9992 \u65039 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e12" name="events" value="Creative workshops \'97 cooking, craft, photography, art"><label class="check-lbl" for="e12"><div class="check-box"></div>Creative workshops \'97 cooking, craft, photography, art 
+\f2 \uc0\u55356 \u57256 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e13" name="events" value="Charity and volunteer days \'97 doing good together"><label class="check-lbl" for="e13"><div class="check-box"></div>Charity & volunteer days \'97 doing good, together 
+\f2 \uc0\u55358 \u56626 
+\f0 </label></div>\
+        <div class="check-item"><input type="checkbox" id="e14" name="events" value="Brand and business collab events \'97 exclusive experiences with aligned brands"><label class="check-lbl" for="e14"><div class="check-box"></div>Brand & business collab events \'97 exclusive, curated, aligned 
+\f2 \uc0\u55356 \u57119 
+\f0 </label></div>\
+      </div>\
+    </div>\
+\
+    <div class="field" style="margin-top: 24px;">\
+      <label class="field-label">Is there a dream event or experience you'd love to see us run? <span class="opt">(optional)</span></label>\
+      <div class="field-sub">Wild ideas welcome. You might be describing our next event.</div>\
+      <textarea id="dreamEvent" placeholder="Paint the picture \'97 what would your ideal Velara experience look like?"></textarea>\
+    </div>\
+\
+    <div class="nav-row">\
+      <button class="btn-back" onclick="goTo(4)">
+\f3 \uc0\u8592 
+\f0  Back</button>\
+      <button class="btn-next" onclick="goTo(6)">Next \'97 giving back 
+\f3 \uc0\u8594 
+\f0 </button>\
+    </div>\
+  </div>\
+\
+  <!-- PAGE 6: GIVING BACK -->\
+  <div class="form-page" id="page6">\
+    <div class="page-eyebrow">Step 6 of 7</div>\
+    <div class="page-title">Giving back.</div>\
+    <div class="page-hint">A Velara is a woman who receives and gives. Sisterhood without impact isn't the full picture.</div>\
+\
+    <div class="field">\
+      <label class="field-label">Are you interested in giving back through House of Velara? *</label>\
+      <div class="card-wrap">\
+        <div class="card-item">\
+          <input type="radio" name="giveback" id="g1" value="Yes \'97 community volunteering and events">\
+          <label class="card-lbl" for="g1">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">Yes \'97 local community volunteering and charity events 
+\f2 \uc0\u55358 \u56626 
+\f0 </span>\
+              <span class="card-desc">Food banks, women's shelters, community gardens. Showing up together for something bigger than ourselves.</span>\
+            </div>\
+          </label>\
+        </div>\
+        <div class="card-item">\
+          <input type="radio" name="giveback" id="g2" value="Yes \'97 international causes too">\
+          <label class="card-lbl" for="g2">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">Yes \'97 locally and internationally 
+\f2 \uc0\u55356 \u57101 
+\f0 </span>\
+              <span class="card-desc">I want to give back close to home and support causes in other countries too \'97 especially ones affecting women and girls.</span>\
+            </div>\
+          </label>\
+        </div>\
+        <div class="card-item">\
+          <input type="radio" name="giveback" id="g3" value="Yes \'97 within the community, mentoring other women">\
+          <label class="card-lbl" for="g3">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">Yes \'97 mentoring and supporting other women in the community 
+\f2 \uc0\u55358 \u56589 
+\f0 </span>\
+              <span class="card-desc">I want to show up for the women in this sisterhood who are earlier in their journey than I am.</span>\
+            </div>\
+          </label>\
+        </div>\
+        <div class="card-item">\
+          <input type="radio" name="giveback" id="g4" value="All of the above \'97 I'm here for all of it">\
+          <label class="card-lbl" for="g4">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">All of the above \'97 I'm here for all of it 
+\f1 \uc0\u10022 
+\f0 </span>\
+              <span class="card-desc">Count me in for everything.</span>\
+            </div>\
+          </label>\
+        </div>\
+        <div class="card-item">\
+          <input type="radio" name="giveback" id="g5" value="Not right now \'97 maybe later">\
+          <label class="card-lbl" for="g5">\
+            <div class="card-dot"></div>\
+            <div class="card-text">\
+              <span class="card-strong">Not right now \'97 maybe later</span>\
+              <span class="card-desc">I'm still finding my feet in the community. I'd love to revisit this once I'm settled.</span>\
+            </div>\
+          </label>\
+        </div>\
+      </div>\
+    </div>\
+\
+    <div class="field" style="margin-top: 24px;">\
+      <label class="field-label">Is there a cause close to your heart that you'd love House of Velara to support? <span class="opt">(optional)</span></label>\
+      <div class="field-sub">Women's rights, mental health, education, environment, local community \'97 tell us what matters to you.</div>\
+      <textarea id="cause" placeholder="Tell me about the cause that lights you up..."></textarea>\
+    </div>\
+\
+    <div class="nav-row">\
+      <button class="btn-back" onclick="goTo(5)">
+\f3 \uc0\u8592 
+\f0  Back</button>\
+      <button class="btn-next" onclick="goTo(7)">Next \'97 almost done 
+\f3 \uc0\u8594 
+\f0 </button>\
+    </div>\
+  </div>\
+\
+  <!-- PAGE 7: LAST THINGS -->\
+  <div class="form-page" id="page7">\
+    <div class="page-eyebrow">Step 7 of 7 \'97 last bit, I promise</div>\
+    <div class="page-title">The question that matters most.</div>\
+    <div class="page-hint">You've been honest all the way through. Don't stop now. This last bit is just between you and me.</div>\
+\
+    <div class="field">\
+      <label class="field-label">What is the one thing you are hoping House of Velara gives you? *</label>\
+      <div class="field-sub">Be honest. There is no right answer. I read every single response personally \'97 and some of them have genuinely moved me. This is not a form field. It's the start of a conversation.</div>\
+      <textarea id="hope" style="min-height: 130px;" placeholder="Write whatever comes to you. I'll read it." required></textarea>\
+    </div>\
+\
+    <div class="field" style="margin-top: 8px;">\
+      <label class="field-label">Is there anything else you want me to know about you? <span class="opt">(optional)</span></label>\
+      <div class="field-sub">Something that doesn't fit anywhere else. Something you just wanted to say.</div>\
+      <textarea id="anything" placeholder="Say whatever you want here. I'm listening."></textarea>\
+    </div>\
+\
+    <div class="field" style="margin-top: 32px;">\
+      <label class="field-label" style="margin-bottom: 16px;">Before you join, just a few things 
+\f2 \uc0\u55358 \u56589 
+\f0 </label>\
+      <div class="consent-list">\
+        <div class="consent-row">\
+          <input type="checkbox" class="consent-chk" id="c1" required>\
+          <div class="consent-txt">I understand that House of Velara is a women-only space built on respect, honesty, and confidentiality. What is shared in this community stays here. I'll honour that \'97 always.</div>\
+        </div>\
+        <div class="consent-row">\
+          <input type="checkbox" class="consent-chk" id="c2" required>\
+          <div class="consent-txt">I'm happy to receive emails and WhatsApp messages from House of Velara \'97 personal check-ins, event invites, and the newsletter. I can unsubscribe anytime, no hard feelings.</div>\
+        </div>\
+        <div class="consent-row">\
+          <input type="checkbox" class="consent-chk" id="c3">\
+          <div class="consent-txt">I'm okay with my first name, city, Instagram, and LinkedIn (if shared) being visible to other Velaras \'97 and with House of Velara giving me a shout-out on social media to celebrate my joining. Women supporting women \'97 always. <span style="color:var(--rose);font-style:italic;">(Optional)</span></div>\
+        </div>\
+      </div>\
+    </div>\
+\
+    <div class="nav-row">\
+      <button class="btn-back" onclick="goTo(6)">
+\f3 \uc0\u8592 
+\f0  Back</button>\
+      <button class="btn-submit" onclick="handleSubmit(event)">I am a Velara \'97 I'm in 
+\f1 \uc0\u10022 
+\f0 </button>\
+    </div>\
+\
+    <p style="font-size: 12px; color: var(--rose); text-align: center; margin-top: 20px; font-style: italic;">The Circle is completely free. No card, no commitment, no catch. You're joining a sisterhood, not signing up for a service.</p>\
+  </div>\
+\
+  <!-- SUCCESS -->\
+  <div class="success" id="success">\
+    <div class="suc-star">
+\f1 \uc0\u10022 
+\f0  
+\f1 \uc0\u10022 
+\f0  
+\f1 \uc0\u10022 
+\f0 </div>\
+    <div class="suc-greeting">Hi <span id="sucName">lovely</span>,</div>\
+    <div class="suc-title">You're home<br>now. <em>Really.</em></div>\
+    <div class="suc-text">I read your answer. Thank you for being that honest \'97 it's exactly the kind of woman this sisterhood was built for. Your welcome email is on its way right now.</div>\
+    <div class="suc-steps">\
+      <div class="suc-step">\
+        <div class="suc-n">1</div>\
+        <div class="suc-t">Check your inbox \'97 your welcome email has the link to join our community group. (Check spam too, just in case.)</div>\
+      </div>\
+      <div class="suc-step">\
+        <div class="suc-n">2</div>\
+        <div class="suc-t">When you get into the group \'97 say hi. Just your name, your city, and one thing. The women in there are going to love you.</div>\
+      </div>\
+      <div class="suc-step">\
+        <div class="suc-n">3</div>\
+        <div class="suc-t">Follow @velara.house on Instagram and TikTok. Your first event invite is coming within the week.</div>\
+      </div>\
+      <div class="suc-step">\
+        <div class="suc-n">4</div>\
+        <div class="suc-t">If you shared your Instagram or LinkedIn \'97 keep an eye out. We'll be giving you a shout. Women supporting women. 
+\f1 \uc0\u10022 
+\f0 </div>\
+      </div>\
+    </div>\
+    <div class="suc-identity">I am a Velara. 
+\f1 \uc0\u10022 
+\f0 </div>\
+  </div>\
+\
+  <div class="foot">\
+    <p>House of Velara \'b7 houseofvelara.com \'b7 Vancouver \'b7 Philippines \'b7 Spain \'b7 @velara.house</p>\
+  </div>\
+\
+</div>\
+\
+<script>\
+  let currentPage = 1;\
+  const totalPages = 7;\
+  const stepLabels = ['ps1','ps2','ps3','ps4','ps5','ps6','ps7'];\
+\
+  function updateProgress(page) \{\
+    const pct = ((page - 1) / (totalPages - 1)) * 100;\
+    document.getElementById('progressFill').style.width = pct + '%';\
+    stepLabels.forEach((id, i) => \{\
+      const el = document.getElementById(id);\
+      el.classList.remove('active','done');\
+      if (i + 1 === page) el.classList.add('active');\
+      else if (i + 1 < page) el.classList.add('done');\
+    \});\
+  \}\
+\
+  function goTo(page) \{\
+    if (currentPage === 1 && page > 1) \{\
+      const fn = document.getElementById('firstName').value.trim();\
+      const em = document.getElementById('email').value.trim();\
+      const ci = document.getElementById('city').value.trim();\
+      if (!fn || !em || !ci) \{ alert('Just need your first name, email, and city to continue 
+\f2 \uc0\u55358 \u56589 
+\f0 '); return; \}\
+    \}\
+    if (currentPage === 3 && page > 3) \{\
+      const job = document.getElementById('job').value.trim();\
+      if (!job) \{ alert('Tell me what you do! Just a quick line. 
+\f2 \uc0\u55358 \u56589 
+\f0 '); return; \}\
+    \}\
+    document.getElementById('page' + currentPage).classList.remove('active');\
+    currentPage = page;\
+    document.getElementById('page' + currentPage).classList.add('active');\
+    updateProgress(currentPage);\
+    window.scrollTo(\{ top: 0, behavior: 'smooth' \});\
+  \}\
+\
+  // \uc0\u9472 \u9472  PASTE YOUR ZAPIER / MAKE WEBHOOK URL HERE \u9472 \u9472 \
+  const WEBHOOK_URL = 'https://hook.us2.make.com/38w8kil2gilhl8aj13cv8c9f757yjq6u';\
+\
+  function getChecked(name) \{\
+    return [...document.querySelectorAll(`input[name="$\{name\}"]:checked`)].map(el => el.value).join(', ');\
+  \}\
+  function getRadio(name) \{\
+    const el = document.querySelector(`input[name="$\{name\}"]:checked`);\
+    return el ? el.value : '';\
+  \}\
+\
+  async function handleSubmit(e) \{\
+    e.preventDefault();\
+    const hope = document.getElementById('hope').value.trim();\
+    const c1 = document.getElementById('c1').checked;\
+    const c2 = document.getElementById('c2').checked;\
+    if (!hope) \{ alert('Please share what you\\'re hoping for \'97 I really do read these. 
+\f1 \uc0\u10022 
+\f0 '); return; \}\
+    if (!c1 || !c2) \{ alert('Please agree to the community values and messages \'97 just the first two checkboxes. 
+\f2 \uc0\u55358 \u56589 
+\f0 '); return; \}\
+\
+    const bdayMonth = document.getElementById('bdayMonth').value;\
+    const bdayDay   = document.getElementById('bdayDay').value;\
+    const birthday  = (bdayMonth && bdayDay) ? `$\{bdayMonth\} $\{bdayDay\}` : '';\
+\
+    const payload = \{\
+      // \uc0\u9472 \u9472  Page 1: You\
+      first_name:      document.getElementById('firstName').value.trim(),\
+      last_name:       document.getElementById('lastName').value.trim(),\
+      email:           document.getElementById('email').value.trim(),\
+      whatsapp:        document.getElementById('whatsapp').value.trim(),\
+      instagram:       document.getElementById('instagram').value.trim(),\
+      city:            document.getElementById('city').value.trim(),\
+      birthday,\
+      referral_source: document.getElementById('source').value,\
+      // \uc0\u9472 \u9472  Page 2: Life\
+      life_stage:      getRadio('lifeStage'),\
+      relationship:    getRadio('relStatus'),\
+      // \uc0\u9472 \u9472  Page 3: Work\
+      job_title:       document.getElementById('job').value.trim(),\
+      industry:        document.getElementById('industry').value,\
+      linkedin:        document.getElementById('linkedin').value.trim(),\
+      work_situation:  getChecked('workSit'),\
+      superpower:      document.getElementById('skill').value.trim(),\
+      // \uc0\u9472 \u9472  Page 4: Sisterhood\
+      drawn_to:        getChecked('drawn'),\
+      prev_community:  getRadio('prevCom'),\
+      open_to_hosting: getRadio('hosting'),\
+      // \uc0\u9472 \u9472  Page 5: Events\
+      events_excited:  getChecked('events'),\
+      dream_event:     document.getElementById('dreamEvent').value.trim(),\
+      // \uc0\u9472 \u9472  Page 6: Giving back\
+      giveback:        getRadio('giveback'),\
+      fav_cause:       document.getElementById('cause').value.trim(),\
+      // \uc0\u9472 \u9472  Page 7: Final\
+      biggest_hope:    hope,\
+      anything_else:   document.getElementById('anything').value.trim(),\
+      consent_community:   c1,\
+      consent_comms:       c2,\
+      consent_shoutout:    document.getElementById('c3').checked,\
+      submitted_at:    new Date().toISOString(),\
+    \};\
+\
+    // Show loading state on button\
+    const btn = e.target;\
+    const original = btn.textContent;\
+    btn.textContent = 'Sending\'85 
+\f2 \uc0\u55358 \u56589 
+\f0 ';\
+    btn.disabled = true;\
+\
+    try \{\
+      await fetch(WEBHOOK_URL, \{\
+        method: 'POST',\
+        headers: \{ 'Content-Type': 'application/json' \},\
+        body: JSON.stringify(payload),\
+        mode: 'no-cors' // Zapier/Make webhooks don't return CORS headers\
+      \});\
+    \} catch (err) \{\
+      // no-cors means we can't read the response \'97 this is expected\
+      // The data still goes through; we proceed to success\
+    \}\
+\
+    const name = payload.first_name || 'lovely';\
+    document.getElementById('page7').classList.remove('active');\
+    const s = document.getElementById('success');\
+    s.classList.add('show');\
+    document.getElementById('sucName').textContent = name;\
+    window.scrollTo(\{ top: 0, behavior: 'smooth' \});\
+  \}\
+\
+  updateProgress(1);\
+</script>\
+</body>\
+</html>}
