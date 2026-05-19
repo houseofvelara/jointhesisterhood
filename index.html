@@ -722,7 +722,9 @@
     btn.disabled=true;
 
     try{
-      await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),mode:'no-cors'});
+      const form = new URLSearchParams();
+      Object.entries(payload).forEach(([k,v]) => form.append(k, v));
+      await fetch(WEBHOOK_URL,{method:'POST',body:form,mode:'no-cors'});
     }catch(err){}
 
     const name=payload.first_name||'lovely';
