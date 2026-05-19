@@ -12,7 +12,6 @@
     --rouge: #B03040;
     --ember: #C9824A;
     --blush: #F5C8B0;
-    --ivory: #FAF4EE;
     --rose: #C0A898;
     --cream: #F5EDE8;
     --soft: #FDF9F5;
@@ -22,72 +21,93 @@
   body { background: var(--soft); font-family: 'Lato', sans-serif; min-height: 100vh; display: flex; justify-content: center; }
   .page { width: 100%; max-width: 660px; display: flex; flex-direction: column; }
 
-  /* HERO */
-  .hero { background: var(--noir); padding: 56px 48px 48px; text-align: center; position: relative; overflow: hidden; }
-  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--ember), transparent); }
-  .hero-star { font-size: 17px; color: var(--ember); letter-spacing: 10px; margin-bottom: 24px; }
-  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 50px; font-weight: 300; color: white; line-height: 1.05; letter-spacing: 0.04em; margin-bottom: 4px; }
-  .hero-title em { font-style: italic; color: var(--ember); }
-  .hero-rule { width: 40px; height: 1px; background: var(--ember); margin: 22px auto; }
-  .hero-sub { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--rose); line-height: 1.6; margin-bottom: 24px; }
-  .hero-tag { display: inline-block; background: rgba(139,26,42,0.5); border: 1px solid var(--burg); color: var(--blush); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 8px 22px; border-radius: 20px; }
+  /* ANIMATIONS */
+  @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes shimmer { 0%,100% { opacity: 0.7; } 50% { opacity: 1; } }
+  @keyframes starPulse { 0%,100% { letter-spacing: 10px; opacity: 0.8; } 50% { letter-spacing: 14px; opacity: 1; } }
+  @keyframes ruleGrow { from { width: 0; } to { width: 40px; } }
+  @keyframes floatUp { 0% { opacity: 0; transform: translateY(30px) scale(0.95); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+  @keyframes borderPulse { 0%,100% { border-color: #DDD0C8; } 50% { border-color: var(--rose); } }
+  @keyframes successGlow { 0% { opacity: 0; transform: scale(0.96); } 100% { opacity: 1; transform: scale(1); } }
+  @keyframes tickDraw { from { stroke-dashoffset: 30; } to { stroke-dashoffset: 0; } }
+  @keyframes spinIn { from { transform: rotate(-180deg) scale(0); opacity: 0; } to { transform: rotate(0deg) scale(1); opacity: 1; } }
+  @keyframes slideRight { from { width: 0%; } to { width: var(--target-w); } }
 
-  /* LETTER */
-  .letter { background: white; padding: 44px 48px 40px; border-bottom: 1px solid #EDE0D8; }
+  .hero { background: var(--noir); padding: 56px 48px 48px; text-align: center; position: relative; overflow: hidden; }
+  .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--ember), transparent); animation: shimmer 3s ease-in-out infinite; }
+  .hero-star { font-size: 17px; color: var(--ember); animation: starPulse 4s ease-in-out infinite; margin-bottom: 24px; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: 50px; font-weight: 300; color: white; line-height: 1.05; letter-spacing: 0.04em; margin-bottom: 4px; animation: fadeSlideUp 0.9s ease both; }
+  .hero-title em { font-style: italic; color: var(--ember); }
+  .hero-rule { width: 40px; height: 1px; background: var(--ember); margin: 22px auto; animation: ruleGrow 1.2s ease both 0.4s; }
+  .hero-sub { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--rose); line-height: 1.6; margin-bottom: 24px; animation: fadeSlideUp 0.9s ease both 0.5s; }
+  .hero-tag { display: inline-block; background: rgba(139,26,42,0.5); border: 1px solid var(--burg); color: var(--blush); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 8px 22px; border-radius: 20px; animation: fadeSlideUp 0.9s ease both 0.7s; }
+
+  .letter { background: white; padding: 44px 48px 40px; border-bottom: 1px solid #EDE0D8; animation: fadeSlideUp 0.8s ease both 0.3s; }
   .letter p { font-size: 15px; line-height: 1.9; color: #3A2A2A; margin-bottom: 14px; }
   .letter p:last-of-type { margin-bottom: 0; }
   .letter em { font-style: italic; color: var(--burg); }
   .letter-sig { margin-top: 24px; font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--burg); }
 
-  /* PROGRESS */
-  .progress-bar-wrap { background: white; padding: 16px 48px 0; border-bottom: 1px solid #EDE0D8; position: sticky; top: 0; z-index: 10; }
-  .progress-steps { display: flex; justify-content: space-between; margin-bottom: 12px; }
-  .progress-step { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #C0B0A8; transition: color 0.3s; }
-  .progress-step.active { color: var(--burg); }
+  .progress-bar-wrap { background: white; padding: 16px 48px 14px; border-bottom: 1px solid #EDE0D8; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 12px rgba(45,10,20,0.06); }
+  .progress-steps { display: flex; justify-content: space-between; margin-bottom: 10px; }
+  .progress-step { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #C0B0A8; transition: color 0.4s, transform 0.3s; }
+  .progress-step.active { color: var(--burg); transform: scale(1.08); }
   .progress-step.done { color: var(--ember); }
   .progress-track { height: 3px; background: #EDE0D8; border-radius: 2px; overflow: hidden; }
-  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--burg), var(--ember)); border-radius: 2px; transition: width 0.4s ease; width: 0%; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--burg), var(--ember)); border-radius: 2px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); width: 0%; }
 
-  /* FORM PAGES */
-  .form-page { display: none; background: white; padding: 44px 48px 48px; animation: fadeIn 0.3s ease; }
-  .form-page.active { display: block; }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .form-page { display: none; background: white; padding: 44px 48px 48px; }
+  .form-page.active { display: block; animation: floatUp 0.4s cubic-bezier(0.4,0,0.2,1) both; }
   .page-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ember); margin-bottom: 8px; }
   .page-title { font-family: 'Cormorant Garamond', serif; font-size: 30px; color: var(--noir); margin-bottom: 8px; line-height: 1.2; }
   .page-hint { font-size: 14px; color: var(--rose); margin-bottom: 32px; line-height: 1.65; font-style: italic; }
 
-  /* FIELDS */
   .field { margin-bottom: 22px; }
-  .field:last-of-type { margin-bottom: 0; }
   .field-label { display: block; font-size: 13px; font-weight: 700; color: var(--noir); margin-bottom: 8px; line-height: 1.4; }
   .field-label .opt { font-weight: 300; color: var(--rose); font-style: italic; font-size: 12px; }
   .field-sub { font-size: 12px; color: #9A8A82; margin-bottom: 10px; font-style: italic; line-height: 1.5; }
-  input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="date"], select, textarea {
+
+  input[type="text"], input[type="email"], input[type="tel"], input[type="url"], select, textarea {
     width: 100%; padding: 13px 16px; background: var(--soft); border: 1px solid #DDD0C8; border-radius: 4px;
-    font-family: 'Lato', sans-serif; font-size: 14px; color: var(--noir); transition: border-color 0.2s, background 0.2s; outline: none; appearance: none;
+    font-family: 'Lato', sans-serif; font-size: 14px; color: var(--noir);
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s, transform 0.2s;
+    outline: none; appearance: none;
   }
-  input:focus, select:focus, textarea:focus { border-color: var(--burg); background: white; }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--burg); background: white;
+    box-shadow: 0 0 0 3px rgba(139,26,42,0.08);
+    transform: translateY(-1px);
+  }
   input::placeholder, textarea::placeholder { color: #C0B0A8; font-style: italic; }
   select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238B1A2A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
   textarea { resize: vertical; min-height: 100px; line-height: 1.7; }
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
 
   /* PILL CHOICES */
   .pill-wrap { display: flex; flex-wrap: wrap; gap: 9px; }
   .pill-item { position: relative; }
   .pill-item input { position: absolute; opacity: 0; width: 0; height: 0; }
-  .pill-lbl { display: block; padding: 10px 18px; background: var(--soft); border: 1.5px solid #DDD0C8; border-radius: 28px; font-size: 13px; color: #5A4A4A; cursor: pointer; transition: all 0.15s; user-select: none; white-space: nowrap; }
-  .pill-item input:checked + .pill-lbl { background: var(--cream); border-color: var(--burg); color: var(--burg); font-weight: 700; }
-  .pill-lbl:hover { border-color: var(--rose); }
+  .pill-lbl {
+    display: block; padding: 10px 18px; background: var(--soft); border: 1.5px solid #DDD0C8;
+    border-radius: 28px; font-size: 13px; color: #5A4A4A; cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4,0,0.2,1); user-select: none; white-space: nowrap;
+  }
+  .pill-item input:checked + .pill-lbl { background: var(--cream); border-color: var(--burg); color: var(--burg); font-weight: 700; transform: scale(1.04); box-shadow: 0 2px 8px rgba(139,26,42,0.12); }
+  .pill-lbl:hover { border-color: var(--rose); transform: translateY(-1px); }
 
   /* CARD CHOICES */
   .card-wrap { display: flex; flex-direction: column; gap: 10px; }
   .card-item { position: relative; }
   .card-item input { position: absolute; opacity: 0; width: 0; height: 0; }
-  .card-lbl { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; background: var(--soft); border: 1.5px solid #DDD0C8; border-radius: 8px; cursor: pointer; transition: all 0.15s; user-select: none; }
-  .card-item input:checked + .card-lbl { background: var(--cream); border-color: var(--burg); }
-  .card-dot { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #C0A898; flex-shrink: 0; margin-top: 1px; transition: all 0.15s; }
+  .card-lbl {
+    display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px;
+    background: var(--soft); border: 1.5px solid #DDD0C8; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4,0,0.2,1); user-select: none;
+  }
+  .card-item input:checked + .card-lbl { background: var(--cream); border-color: var(--burg); transform: translateX(3px); box-shadow: -3px 0 0 var(--burg), 0 2px 12px rgba(139,26,42,0.08); }
+  .card-lbl:hover { border-color: var(--rose); transform: translateX(2px); }
+  .card-dot { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid #C0A898; flex-shrink: 0; margin-top: 1px; transition: all 0.2s; }
   .card-item input:checked + .card-lbl .card-dot { background: var(--burg); border-color: var(--burg); box-shadow: inset 0 0 0 4px white; }
   .card-text { flex: 1; }
   .card-strong { font-size: 14px; font-weight: 700; color: var(--noir); display: block; margin-bottom: 3px; }
@@ -97,54 +117,94 @@
   .check-wrap { display: flex; flex-direction: column; gap: 8px; }
   .check-item { position: relative; }
   .check-item input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
-  .check-lbl { display: flex; align-items: center; gap: 12px; padding: 13px 16px; background: var(--soft); border: 1.5px solid #DDD0C8; border-radius: 6px; cursor: pointer; transition: all 0.15s; font-size: 13px; color: #3A2A2A; user-select: none; }
-  .check-item input:checked + .check-lbl { background: var(--cream); border-color: var(--burg); color: var(--burg); font-weight: 700; }
-  .check-box { width: 20px; height: 20px; border-radius: 4px; border: 1.5px solid #C0A898; flex-shrink: 0; transition: all 0.15s; position: relative; background: white; }
+  .check-lbl {
+    display: flex; align-items: center; gap: 12px; padding: 13px 16px;
+    background: var(--soft); border: 1.5px solid #DDD0C8; border-radius: 6px; cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4,0,0.2,1); font-size: 13px; color: #3A2A2A; user-select: none;
+  }
+  .check-item input:checked + .check-lbl { background: var(--cream); border-color: var(--burg); color: var(--burg); font-weight: 700; transform: translateX(3px); }
+  .check-lbl:hover { border-color: var(--rose); background: #fdf6f3; }
+  .check-box {
+    width: 20px; height: 20px; border-radius: 4px; border: 1.5px solid #C0A898;
+    flex-shrink: 0; transition: all 0.2s; position: relative; background: white;
+  }
   .check-item input:checked + .check-lbl .check-box { background: var(--burg); border-color: var(--burg); }
-  .check-item input:checked + .check-lbl .check-box::after { content: ''; position: absolute; top: 3px; left: 5px; width: 8px; height: 5px; border-left: 2px solid white; border-bottom: 2px solid white; transform: rotate(-45deg); }
+  .check-item input:checked + .check-lbl .check-box::after {
+    content: ''; position: absolute; top: 3px; left: 5px; width: 8px; height: 5px;
+    border-left: 2px solid white; border-bottom: 2px solid white; transform: rotate(-45deg);
+  }
 
   /* CONSENT */
   .consent-list { display: flex; flex-direction: column; gap: 14px; }
   .consent-row { display: flex; gap: 12px; align-items: flex-start; }
-  .consent-chk { width: 19px; height: 19px; border: 1.5px solid #C0A898; border-radius: 4px; flex-shrink: 0; margin-top: 2px; appearance: none; background: white; cursor: pointer; transition: all 0.15s; position: relative; }
+  .consent-chk {
+    width: 19px; height: 19px; border: 1.5px solid #C0A898; border-radius: 4px;
+    flex-shrink: 0; margin-top: 2px; appearance: none; background: white; cursor: pointer;
+    transition: all 0.2s; position: relative;
+  }
   .consent-chk:checked { background: var(--burg); border-color: var(--burg); }
   .consent-chk:checked::after { content: ''; position: absolute; top: 2px; left: 4px; width: 9px; height: 5px; border-left: 2px solid white; border-bottom: 2px solid white; transform: rotate(-45deg); }
   .consent-txt { font-size: 13px; color: #6A5A5A; line-height: 1.7; }
 
   /* NAV BUTTONS */
   .nav-row { display: flex; justify-content: space-between; align-items: center; margin-top: 36px; gap: 16px; }
-  .btn-back { background: none; border: 1.5px solid #DDD0C8; color: var(--rose); font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 700; padding: 14px 24px; border-radius: 4px; cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em; }
-  .btn-back:hover { border-color: var(--rose); color: var(--mid); }
-  .btn-next, .btn-submit { flex: 1; background: var(--burg); color: white; font-family: 'Lato', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 0.06em; padding: 16px 28px; border: none; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
-  .btn-next:hover, .btn-submit:hover { background: var(--rouge); }
+  .btn-back {
+    background: none; border: 1.5px solid #DDD0C8; color: var(--rose);
+    font-family: 'Lato', sans-serif; font-size: 13px; font-weight: 700; padding: 14px 24px;
+    border-radius: 4px; cursor: pointer; transition: all 0.2s; letter-spacing: 0.04em;
+  }
+  .btn-back:hover { border-color: var(--rose); color: var(--mid); transform: translateX(-2px); }
+  .btn-next, .btn-submit {
+    flex: 1; background: var(--burg); color: white; font-family: 'Lato', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 0.06em; padding: 16px 28px;
+    border: none; border-radius: 4px; cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden;
+  }
+  .btn-next::after, .btn-submit::after {
+    content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0);
+    transition: background 0.2s;
+  }
+  .btn-next:hover, .btn-submit:hover { background: var(--rouge); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(139,26,42,0.25); }
+  .btn-next:active, .btn-submit:active { transform: translateY(0); box-shadow: none; }
   .btn-submit { background: var(--noir); }
   .btn-submit:hover { background: var(--burg); }
-
-  /* SUCCESS */
-  .success { display: none; background: var(--noir); padding: 64px 48px; text-align: center; flex-direction: column; align-items: center; }
-  .success.show { display: flex; }
-  .suc-star { font-size: 22px; color: var(--ember); letter-spacing: 8px; margin-bottom: 28px; }
-  .suc-greeting { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--rose); margin-bottom: 10px; }
-  .suc-title { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; color: white; line-height: 1.1; margin-bottom: 20px; }
-  .suc-title em { color: var(--ember); font-style: italic; }
-  .suc-text { font-size: 15px; color: var(--blush); line-height: 1.85; max-width: 420px; margin-bottom: 40px; }
-  .suc-steps { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 400px; margin-bottom: 40px; }
-  .suc-step { display: flex; gap: 16px; align-items: flex-start; text-align: left; padding: 16px 20px; background: rgba(139,26,42,0.25); border: 1px solid rgba(139,26,42,0.45); border-radius: 8px; }
-  .suc-n { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--ember); line-height: 1; flex-shrink: 0; }
-  .suc-t { font-size: 13px; color: var(--blush); line-height: 1.65; }
-  .suc-identity { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic; color: var(--ember); }
-
-  /* FOOTER */
-  .foot { background: var(--noir); padding: 20px 32px; text-align: center; }
-  .foot p { font-size: 11px; color: #5A3A4A; }
 
   /* BIRTHDAY */
   .bday-hint { font-size: 11px; color: var(--rose); font-style: italic; margin-top: 6px; }
 
+  /* SUCCESS */
+  .success { display: none; background: var(--noir); padding: 64px 48px; text-align: center; flex-direction: column; align-items: center; }
+  .success.show { display: flex; animation: successGlow 0.6s ease both; }
+  .suc-star { font-size: 22px; color: var(--ember); letter-spacing: 8px; margin-bottom: 28px; animation: starPulse 4s ease-in-out infinite; }
+  .suc-greeting { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-style: italic; color: var(--rose); margin-bottom: 10px; animation: fadeSlideUp 0.6s ease both 0.2s; }
+  .suc-title { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 300; color: white; line-height: 1.1; margin-bottom: 20px; animation: fadeSlideUp 0.6s ease both 0.35s; }
+  .suc-title em { color: var(--ember); font-style: italic; }
+  .suc-text { font-size: 15px; color: var(--blush); line-height: 1.85; max-width: 420px; margin-bottom: 40px; animation: fadeSlideUp 0.6s ease both 0.5s; }
+  .suc-steps { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 400px; margin-bottom: 40px; }
+  .suc-step {
+    display: flex; gap: 16px; align-items: flex-start; text-align: left;
+    padding: 16px 20px; background: rgba(139,26,42,0.25); border: 1px solid rgba(139,26,42,0.45);
+    border-radius: 8px; opacity: 0; transform: translateY(12px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .suc-step.visible { opacity: 1; transform: translateY(0); }
+  .suc-n { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--ember); line-height: 1; flex-shrink: 0; }
+  .suc-t { font-size: 13px; color: var(--blush); line-height: 1.65; }
+  .suc-identity { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-style: italic; color: var(--ember); opacity: 0; animation: fadeSlideUp 0.6s ease forwards 1.6s; }
+
+  /* FIELD APPEAR ANIMATION on page transition */
+  .form-page.active .field { animation: fadeSlideUp 0.4s ease both; }
+  .form-page.active .field:nth-child(2) { animation-delay: 0.05s; }
+  .form-page.active .field:nth-child(3) { animation-delay: 0.1s; }
+  .form-page.active .field:nth-child(4) { animation-delay: 0.15s; }
+  .form-page.active .field:nth-child(5) { animation-delay: 0.2s; }
+  .form-page.active .field:nth-child(6) { animation-delay: 0.25s; }
+  .form-page.active .field:nth-child(7) { animation-delay: 0.3s; }
+  .form-page.active .nav-row { animation: fadeSlideUp 0.4s ease both 0.35s; }
+
   @media (max-width: 520px) {
     .hero, .letter, .form-page { padding-left: 24px; padding-right: 24px; }
     .progress-bar-wrap { padding-left: 24px; padding-right: 24px; }
-    .two-col, .three-col { grid-template-columns: 1fr; }
+    .two-col { grid-template-columns: 1fr; }
     .hero-title { font-size: 38px; }
     .page-title { font-size: 24px; }
   }
@@ -236,14 +296,32 @@
         <div class="two-col" style="gap:10px;">
           <select id="bdayMonth">
             <option value="" disabled selected>Month</option>
-            <option>January</option><option>February</option><option>March</option>
-            <option>April</option><option>May</option><option>June</option>
-            <option>July</option><option>August</option><option>September</option>
-            <option>October</option><option>November</option><option>December</option>
+            <option value="January">January</option>
+            <option value="February">February</option>
+            <option value="March">March</option>
+            <option value="April">April</option>
+            <option value="May">May</option>
+            <option value="June">June</option>
+            <option value="July">July</option>
+            <option value="August">August</option>
+            <option value="September">September</option>
+            <option value="October">October</option>
+            <option value="November">November</option>
+            <option value="December">December</option>
           </select>
           <select id="bdayDay">
             <option value="" disabled selected>Day</option>
-            ${Array.from({length:31},(_,i)=>`<option>${i+1}</option>`).join('')}
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+            <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+            <option value="10">10</option><option value="11">11</option><option value="12">12</option>
+            <option value="13">13</option><option value="14">14</option><option value="15">15</option>
+            <option value="16">16</option><option value="17">17</option><option value="18">18</option>
+            <option value="19">19</option><option value="20">20</option><option value="21">21</option>
+            <option value="22">22</option><option value="23">23</option><option value="24">24</option>
+            <option value="25">25</option><option value="26">26</option><option value="27">27</option>
+            <option value="28">28</option><option value="29">29</option><option value="30">30</option>
+            <option value="31">31</option>
           </select>
         </div>
         <div class="bday-hint">✦ Yes, we remember. Yes, we celebrate.</div>
@@ -280,72 +358,18 @@
       <label class="field-label">Where are you in life right now? *</label>
       <div class="field-sub">Pick the one that feels most true today.</div>
       <div class="card-wrap">
-        <div class="card-item">
-          <input type="radio" name="lifeStage" id="ls1" value="Rebuilding">
-          <label class="card-lbl" for="ls1">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">I'm rebuilding.</span>
-              <span class="card-desc">Something broke — or I did. I'm putting myself back together and I need women who understand that without needing me to explain.</span>
-            </div>
-          </label>
-        </div>
-        <div class="card-item">
-          <input type="radio" name="lifeStage" id="ls2" value="Thriving but missing depth">
-          <label class="card-lbl" for="ls2">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">I have a good life — but something's missing.</span>
-              <span class="card-desc">I'm doing well. And yet I crave something deeper. Something more real than what I have right now.</span>
-            </div>
-          </label>
-        </div>
-        <div class="card-item">
-          <input type="radio" name="lifeStage" id="ls3" value="Building something new">
-          <label class="card-lbl" for="ls3">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">I'm building something new.</span>
-              <span class="card-desc">A business, a life, a version of myself I haven't fully met yet. I want women around me who are doing the same.</span>
-            </div>
-          </label>
-        </div>
-        <div class="card-item">
-          <input type="radio" name="lifeStage" id="ls4" value="In transition">
-          <label class="card-lbl" for="ls4">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">I'm in transition.</span>
-              <span class="card-desc">A move, a breakup, a new city, a career change, a new chapter. The ground shifted and I'm finding my footing.</span>
-            </div>
-          </label>
-        </div>
-        <div class="card-item">
-          <input type="radio" name="lifeStage" id="ls5" value="Just want sisterhood">
-          <label class="card-lbl" for="ls5">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">I just want a real sisterhood.</span>
-              <span class="card-desc">No specific reason. No crisis. I just want women I can call mine. Women who actually show up.</span>
-            </div>
-          </label>
-        </div>
-        <div class="card-item">
-          <input type="radio" name="lifeStage" id="ls6" value="All of the above">
-          <label class="card-lbl" for="ls6">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">Honestly? All of the above.</span>
-              <span class="card-desc">It is complicated and I am not going to pretend otherwise.</span>
-            </div>
-          </label>
-        </div>
+        <div class="card-item"><input type="radio" name="lifeStage" id="ls1" value="Rebuilding"><label class="card-lbl" for="ls1"><div class="card-dot"></div><div class="card-text"><span class="card-strong">I'm rebuilding.</span><span class="card-desc">Something broke — or I did. I'm putting myself back together and I need women who understand that without needing me to explain.</span></div></label></div>
+        <div class="card-item"><input type="radio" name="lifeStage" id="ls2" value="Thriving but missing depth"><label class="card-lbl" for="ls2"><div class="card-dot"></div><div class="card-text"><span class="card-strong">I have a good life — but something's missing.</span><span class="card-desc">I'm doing well. And yet I crave something deeper. Something more real than what I have right now.</span></div></label></div>
+        <div class="card-item"><input type="radio" name="lifeStage" id="ls3" value="Building something new"><label class="card-lbl" for="ls3"><div class="card-dot"></div><div class="card-text"><span class="card-strong">I'm building something new.</span><span class="card-desc">A business, a life, a version of myself I haven't fully met yet. I want women around me who are doing the same.</span></div></label></div>
+        <div class="card-item"><input type="radio" name="lifeStage" id="ls4" value="In transition"><label class="card-lbl" for="ls4"><div class="card-dot"></div><div class="card-text"><span class="card-strong">I'm in transition.</span><span class="card-desc">A move, a breakup, a new city, a career change, a new chapter. The ground shifted and I'm finding my footing.</span></div></label></div>
+        <div class="card-item"><input type="radio" name="lifeStage" id="ls5" value="Just want sisterhood"><label class="card-lbl" for="ls5"><div class="card-dot"></div><div class="card-text"><span class="card-strong">I just want a real sisterhood.</span><span class="card-desc">No specific reason. No crisis. I just want women I can call mine. Women who actually show up.</span></div></label></div>
+        <div class="card-item"><input type="radio" name="lifeStage" id="ls6" value="All of the above"><label class="card-lbl" for="ls6"><div class="card-dot"></div><div class="card-text"><span class="card-strong">Honestly? All of the above.</span><span class="card-desc">It is complicated and I am not going to pretend otherwise.</span></div></label></div>
       </div>
     </div>
 
-    <div class="field" style="margin-top: 28px;">
+    <div class="field" style="margin-top:28px;">
       <label class="field-label">What's your relationship status? *</label>
-      <div class="field-sub">We celebrate all of it — the love stories, the hot messes, the fresh starts, and everything in between. 💛</div>
+      <div class="field-sub">We celebrate all of it — the love stories, the hot messes, the fresh starts. 💛</div>
       <div class="pill-wrap">
         <div class="pill-item"><input type="radio" name="relStatus" id="r1" value="Single and loving it"><label class="pill-lbl" for="r1">Single and loving it ✨</label></div>
         <div class="pill-item"><input type="radio" name="relStatus" id="r2" value="Single and open to whatever"><label class="pill-lbl" for="r2">Single and open to whatever</label></div>
@@ -381,25 +405,13 @@
       <label class="field-label">What industry are you in?</label>
       <select id="industry">
         <option value="" disabled selected>Pick the closest one...</option>
-        <option>Technology & Digital</option>
-        <option>Healthcare & Medicine</option>
-        <option>Education</option>
-        <option>Finance & Banking</option>
-        <option>Marketing & Communications</option>
-        <option>Creative & Design</option>
-        <option>Law & Legal</option>
-        <option>Business & Consulting</option>
-        <option>Real Estate</option>
-        <option>Retail & Fashion</option>
-        <option>Hospitality & Tourism</option>
-        <option>Beauty & Wellness</option>
-        <option>Non-profit & Social Impact</option>
-        <option>Government & Public Sector</option>
-        <option>Media & Entertainment</option>
-        <option>Science & Research</option>
-        <option>I run my own business</option>
-        <option>I'm between things right now</option>
-        <option>Other</option>
+        <option>Technology & Digital</option><option>Healthcare & Medicine</option><option>Education</option>
+        <option>Finance & Banking</option><option>Marketing & Communications</option><option>Creative & Design</option>
+        <option>Law & Legal</option><option>Business & Consulting</option><option>Real Estate</option>
+        <option>Retail & Fashion</option><option>Hospitality & Tourism</option><option>Beauty & Wellness</option>
+        <option>Non-profit & Social Impact</option><option>Government & Public Sector</option>
+        <option>Media & Entertainment</option><option>Science & Research</option>
+        <option>I run my own business</option><option>I'm between things right now</option><option>Other</option>
       </select>
     </div>
 
@@ -411,7 +423,6 @@
 
     <div class="field">
       <label class="field-label">What's your work situation right now?</label>
-      <div class="field-sub">This helps us know how to support you — and connect you with the right women.</div>
       <div class="check-wrap">
         <div class="check-item"><input type="checkbox" id="w1" name="workSit" value="Actively looking for a job or new role"><label class="check-lbl" for="w1"><div class="check-box"></div>I'm actively looking for a job or new role 🔍</label></div>
         <div class="check-item"><input type="checkbox" id="w2" name="workSit" value="Looking for clients or projects for my business"><label class="check-lbl" for="w2"><div class="check-box"></div>I'm looking for clients or projects for my business 🚀</label></div>
@@ -425,8 +436,8 @@
 
     <div class="field">
       <label class="field-label">Is there something you're brilliant at that you'd want to bring to this sisterhood someday? <span class="opt">(This one I love.)</span></label>
-      <div class="field-sub">A skill, a superpower, a thing you know deeply. You might end up leading a workshop, hosting a circle, or just being the woman another Velara needed to find.</div>
-      <textarea id="skill" placeholder="e.g. I'm a therapist who loves group work. I cook Filipino food from scratch and it's an act of love. I've negotiated six-figure contracts and I want to teach every woman how. I make people feel safe in a room..."></textarea>
+      <div class="field-sub">A skill, a superpower, a thing you know deeply.</div>
+      <textarea id="skill" placeholder="e.g. I'm a therapist who loves group work. I cook Filipino food from scratch and it's an act of love. I make people feel safe in a room..."></textarea>
     </div>
 
     <div class="nav-row">
@@ -445,23 +456,23 @@
       <label class="field-label">What are you most drawn to here? *</label>
       <div class="field-sub">Tick everything that speaks to you. No limit.</div>
       <div class="check-wrap">
-        <div class="check-item"><input type="checkbox" id="d1" name="drawn" value="Real connection — women who actually show up for each other"><label class="check-lbl" for="d1"><div class="check-box"></div>Real connection — women who actually show up ✦</label></div>
-        <div class="check-item"><input type="checkbox" id="d2" name="drawn" value="Wellness — the real kind, not the hustle kind"><label class="check-lbl" for="d2"><div class="check-box"></div>Wellness — the real kind, not the performative kind 🌿</label></div>
-        <div class="check-item"><input type="checkbox" id="d3" name="drawn" value="Mental health — I need a safe space to be honest"><label class="check-lbl" for="d3"><div class="check-box"></div>Mental health — a space where I can be fully honest 🧠</label></div>
-        <div class="check-item"><input type="checkbox" id="d4" name="drawn" value="Career and money — I want to earn more, know more, grow more"><label class="check-lbl" for="d4"><div class="check-box"></div>Career and money — I want to earn more, know more 💼</label></div>
+        <div class="check-item"><input type="checkbox" id="d1" name="drawn" value="Real connection"><label class="check-lbl" for="d1"><div class="check-box"></div>Real connection — women who actually show up ✦</label></div>
+        <div class="check-item"><input type="checkbox" id="d2" name="drawn" value="Wellness — the real kind"><label class="check-lbl" for="d2"><div class="check-box"></div>Wellness — the real kind, not the performative kind 🌿</label></div>
+        <div class="check-item"><input type="checkbox" id="d3" name="drawn" value="Mental health — safe space"><label class="check-lbl" for="d3"><div class="check-box"></div>Mental health — a space where I can be fully honest 🧠</label></div>
+        <div class="check-item"><input type="checkbox" id="d4" name="drawn" value="Career and money"><label class="check-lbl" for="d4"><div class="check-box"></div>Career and money — I want to earn more, know more 💼</label></div>
         <div class="check-item"><input type="checkbox" id="d5" name="drawn" value="Moving my body with women who aren't competitive"><label class="check-lbl" for="d5"><div class="check-box"></div>Moving my body with women who aren't competitive 💪</label></div>
-        <div class="check-item"><input type="checkbox" id="d6" name="drawn" value="Fun — I want to laugh more, try more, do more with women I love"><label class="check-lbl" for="d6"><div class="check-box"></div>Fun — I want to laugh more and try new things 🎉</label></div>
-        <div class="check-item"><input type="checkbox" id="d7" name="drawn" value="Retreats and travel — experiences that genuinely change you"><label class="check-lbl" for="d7"><div class="check-box"></div>Retreats and travel — the kind that changes you ✈️</label></div>
-        <div class="check-item"><input type="checkbox" id="d8" name="drawn" value="Being seen and celebrated — my wins, my hard chapters, my ordinary days"><label class="check-lbl" for="d8"><div class="check-box"></div>Being seen and celebrated — for all of it 🤍</label></div>
-        <div class="check-item"><input type="checkbox" id="d9" name="drawn" value="Intimate home gatherings — small, warm, real conversation"><label class="check-lbl" for="d9"><div class="check-box"></div>Intimate home gatherings — small and warm 🏠</label></div>
-        <div class="check-item"><input type="checkbox" id="d10" name="drawn" value="Women + money workshops — because nobody taught us this"><label class="check-lbl" for="d10"><div class="check-box"></div>Women + money workshops — because nobody taught us this 💰</label></div>
-        <div class="check-item"><input type="checkbox" id="d11" name="drawn" value="Giving back — charitable events, volunteering, doing good together"><label class="check-lbl" for="d11"><div class="check-box"></div>Giving back — charity, volunteering, doing good together 🤲</label></div>
-        <div class="check-item"><input type="checkbox" id="d12" name="drawn" value="Brand and business collabs — being part of something bigger"><label class="check-lbl" for="d12"><div class="check-box"></div>Brand and business collabs — being part of something bigger 🌟</label></div>
+        <div class="check-item"><input type="checkbox" id="d6" name="drawn" value="Fun — laugh more, try more"><label class="check-lbl" for="d6"><div class="check-box"></div>Fun — I want to laugh more and try new things 🎉</label></div>
+        <div class="check-item"><input type="checkbox" id="d7" name="drawn" value="Retreats and travel"><label class="check-lbl" for="d7"><div class="check-box"></div>Retreats and travel — the kind that changes you ✈️</label></div>
+        <div class="check-item"><input type="checkbox" id="d8" name="drawn" value="Being seen and celebrated"><label class="check-lbl" for="d8"><div class="check-box"></div>Being seen and celebrated — for all of it 🤍</label></div>
+        <div class="check-item"><input type="checkbox" id="d9" name="drawn" value="Intimate home gatherings"><label class="check-lbl" for="d9"><div class="check-box"></div>Intimate home gatherings — small and warm 🏠</label></div>
+        <div class="check-item"><input type="checkbox" id="d10" name="drawn" value="Women + money workshops"><label class="check-lbl" for="d10"><div class="check-box"></div>Women + money workshops — because nobody taught us this 💰</label></div>
+        <div class="check-item"><input type="checkbox" id="d11" name="drawn" value="Giving back — charitable events and volunteering"><label class="check-lbl" for="d11"><div class="check-box"></div>Giving back — charity, volunteering, doing good together 🤲</label></div>
+        <div class="check-item"><input type="checkbox" id="d12" name="drawn" value="Brand and business collabs"><label class="check-lbl" for="d12"><div class="check-box"></div>Brand and business collabs — being part of something bigger 🌟</label></div>
       </div>
     </div>
 
-    <div class="field" style="margin-top: 28px;">
-      <label class="field-label">Have you ever been part of a sorority, sisterhood, or women's community before?</label>
+    <div class="field" style="margin-top:28px;">
+      <label class="field-label">Have you ever been part of a sisterhood or women's community before?</label>
       <div class="pill-wrap">
         <div class="pill-item"><input type="radio" name="prevCom" id="pc1" value="Yes — and it was everything"><label class="pill-lbl" for="pc1">Yes — and it was everything 🤍</label></div>
         <div class="pill-item"><input type="radio" name="prevCom" id="pc2" value="Yes — but it didn't feel real"><label class="pill-lbl" for="pc2">Yes — but it didn't feel real</label></div>
@@ -470,9 +481,8 @@
       </div>
     </div>
 
-    <div class="field" style="margin-top: 24px;">
+    <div class="field" style="margin-top:24px;">
       <label class="field-label">Would you ever open your home for a small Velara gathering? <span class="opt">(optional)</span></label>
-      <div class="field-sub">Home gatherings are one of the most sacred parts of our community. No pressure — just good to know.</div>
       <div class="pill-wrap">
         <div class="pill-item"><input type="radio" name="hosting" id="h1" value="Yes I would love that"><label class="pill-lbl" for="h1">Yes, I'd love that 🏠</label></div>
         <div class="pill-item"><input type="radio" name="hosting" id="h2" value="Maybe one day"><label class="pill-lbl" for="h2">Maybe one day</label></div>
@@ -497,25 +507,25 @@
       <label class="field-label">Which events are you most excited about? *</label>
       <div class="field-sub">Pick your top ones — as many as you want.</div>
       <div class="check-wrap">
-        <div class="check-item"><input type="checkbox" id="e1" name="events" value="The Velara Gathering — monthly social mixer"><label class="check-lbl" for="e1"><div class="check-box"></div>Monthly social mixers — beautiful rooms, real conversation 🍷</label></div>
-        <div class="check-item"><input type="checkbox" id="e2" name="events" value="Wellness days — sound bath, breathwork, movement"><label class="check-lbl" for="e2"><div class="check-box"></div>Wellness days — sound bath, breathwork, yoga, nourishment 🌿</label></div>
+        <div class="check-item"><input type="checkbox" id="e1" name="events" value="Monthly social mixers"><label class="check-lbl" for="e1"><div class="check-box"></div>Monthly social mixers — beautiful rooms, real conversation 🍷</label></div>
+        <div class="check-item"><input type="checkbox" id="e2" name="events" value="Wellness days"><label class="check-lbl" for="e2"><div class="check-box"></div>Wellness days — sound bath, breathwork, yoga, nourishment 🌿</label></div>
         <div class="check-item"><input type="checkbox" id="e3" name="events" value="Career and money workshops"><label class="check-lbl" for="e3"><div class="check-box"></div>Career & money workshops — practical, real, no fluff 💼</label></div>
-        <div class="check-item"><input type="checkbox" id="e4" name="events" value="Speaker evenings — women worth listening to"><label class="check-lbl" for="e4"><div class="check-box"></div>Speaker evenings — women with real stories worth hearing 🎤</label></div>
-        <div class="check-item"><input type="checkbox" id="e5" name="events" value="Fitness adventures — hikes, runs, padel, surfing"><label class="check-lbl" for="e5"><div class="check-box"></div>Fitness adventures — hikes, runs, padel, surfing, climbing 💪</label></div>
-        <div class="check-item"><input type="checkbox" id="e6" name="events" value="Fun nights — axe throwing, pottery, painting, karaoke"><label class="check-lbl" for="e6"><div class="check-box"></div>Fun nights — axe throwing, pottery, dancing, karaoke 🎉</label></div>
-        <div class="check-item"><input type="checkbox" id="e7" name="events" value="Mental health circles — sharing, breathwork, journaling"><label class="check-lbl" for="e7"><div class="check-box"></div>Mental health circles — sharing, journaling, honest conversation 🧠</label></div>
-        <div class="check-item"><input type="checkbox" id="e8" name="events" value="Celebration events — birthdays, milestones, Galentine's Gala"><label class="check-lbl" for="e8"><div class="check-box"></div>Celebration events — birthdays, milestones, Galentine's Gala 🥂</label></div>
-        <div class="check-item"><input type="checkbox" id="e9" name="events" value="Annual retreat — a weekend that changes everything"><label class="check-lbl" for="e9"><div class="check-box"></div>Annual retreat — a weekend away that changes everything 🌊</label></div>
-        <div class="check-item"><input type="checkbox" id="e10" name="events" value="Intimate home gatherings — small, warm, real"><label class="check-lbl" for="e10"><div class="check-box"></div>Intimate home gatherings — small, warm, zero performance 🏠</label></div>
-        <div class="check-item"><input type="checkbox" id="e11" name="events" value="Group travel and adventures"><label class="check-lbl" for="e11"><div class="check-box"></div>Group travel and international adventures ✈️</label></div>
-        <div class="check-item"><input type="checkbox" id="e12" name="events" value="Creative workshops — cooking, craft, photography, art"><label class="check-lbl" for="e12"><div class="check-box"></div>Creative workshops — cooking, craft, photography, art 🎨</label></div>
-        <div class="check-item"><input type="checkbox" id="e13" name="events" value="Charity and volunteer days — doing good together"><label class="check-lbl" for="e13"><div class="check-box"></div>Charity & volunteer days — doing good, together 🤲</label></div>
-        <div class="check-item"><input type="checkbox" id="e14" name="events" value="Brand and business collab events — exclusive experiences with aligned brands"><label class="check-lbl" for="e14"><div class="check-box"></div>Brand & business collab events — exclusive, curated, aligned 🌟</label></div>
+        <div class="check-item"><input type="checkbox" id="e4" name="events" value="Speaker evenings"><label class="check-lbl" for="e4"><div class="check-box"></div>Speaker evenings — women with real stories worth hearing 🎤</label></div>
+        <div class="check-item"><input type="checkbox" id="e5" name="events" value="Fitness adventures"><label class="check-lbl" for="e5"><div class="check-box"></div>Fitness adventures — hikes, runs, padel, surfing, climbing 💪</label></div>
+        <div class="check-item"><input type="checkbox" id="e6" name="events" value="Fun nights"><label class="check-lbl" for="e6"><div class="check-box"></div>Fun nights — axe throwing, pottery, dancing, karaoke 🎉</label></div>
+        <div class="check-item"><input type="checkbox" id="e7" name="events" value="Mental health circles"><label class="check-lbl" for="e7"><div class="check-box"></div>Mental health circles — sharing, journaling, honest conversation 🧠</label></div>
+        <div class="check-item"><input type="checkbox" id="e8" name="events" value="Celebration events"><label class="check-lbl" for="e8"><div class="check-box"></div>Celebration events — birthdays, milestones, Galentine's Gala 🥂</label></div>
+        <div class="check-item"><input type="checkbox" id="e9" name="events" value="Annual retreat"><label class="check-lbl" for="e9"><div class="check-box"></div>Annual retreat — a weekend away that changes everything 🌊</label></div>
+        <div class="check-item"><input type="checkbox" id="e10" name="events" value="Intimate home gatherings"><label class="check-lbl" for="e10"><div class="check-box"></div>Intimate home gatherings — small, warm, zero performance 🏠</label></div>
+        <div class="check-item"><input type="checkbox" id="e11" name="events" value="Group travel"><label class="check-lbl" for="e11"><div class="check-box"></div>Group travel and international adventures ✈️</label></div>
+        <div class="check-item"><input type="checkbox" id="e12" name="events" value="Creative workshops"><label class="check-lbl" for="e12"><div class="check-box"></div>Creative workshops — cooking, craft, photography, art 🎨</label></div>
+        <div class="check-item"><input type="checkbox" id="e13" name="events" value="Charity and volunteer days"><label class="check-lbl" for="e13"><div class="check-box"></div>Charity & volunteer days — doing good, together 🤲</label></div>
+        <div class="check-item"><input type="checkbox" id="e14" name="events" value="Brand and business collab events"><label class="check-lbl" for="e14"><div class="check-box"></div>Brand & business collab events — exclusive, curated, aligned 🌟</label></div>
       </div>
     </div>
 
-    <div class="field" style="margin-top: 24px;">
-      <label class="field-label">Is there a dream event or experience you'd love to see us run? <span class="opt">(optional)</span></label>
+    <div class="field" style="margin-top:24px;">
+      <label class="field-label">Is there a dream event you'd love to see us run? <span class="opt">(optional)</span></label>
       <div class="field-sub">Wild ideas welcome. You might be describing our next event.</div>
       <textarea id="dreamEvent" placeholder="Paint the picture — what would your ideal Velara experience look like?"></textarea>
     </div>
@@ -535,62 +545,16 @@
     <div class="field">
       <label class="field-label">Are you interested in giving back through House of Velara? *</label>
       <div class="card-wrap">
-        <div class="card-item">
-          <input type="radio" name="giveback" id="g1" value="Yes — community volunteering and events">
-          <label class="card-lbl" for="g1">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">Yes — local community volunteering and charity events 🤲</span>
-              <span class="card-desc">Food banks, women's shelters, community gardens. Showing up together for something bigger than ourselves.</span>
-            </div>
-          </label>
-        </div>
-        <div class="card-item">
-          <input type="radio" name="giveback" id="g2" value="Yes — international causes too">
-          <label class="card-lbl" for="g2">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">Yes — locally and internationally 🌍</span>
-              <span class="card-desc">I want to give back close to home and support causes in other countries too — especially ones affecting women and girls.</span>
-            </div>
-          </label>
-        </div>
-        <div class="card-item">
-          <input type="radio" name="giveback" id="g3" value="Yes — within the community, mentoring other women">
-          <label class="card-lbl" for="g3">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">Yes — mentoring and supporting other women in the community 🤍</span>
-              <span class="card-desc">I want to show up for the women in this sisterhood who are earlier in their journey than I am.</span>
-            </div>
-          </label>
-        </div>
-        <div class="card-item">
-          <input type="radio" name="giveback" id="g4" value="All of the above — I'm here for all of it">
-          <label class="card-lbl" for="g4">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">All of the above — I'm here for all of it ✦</span>
-              <span class="card-desc">Count me in for everything.</span>
-            </div>
-          </label>
-        </div>
-        <div class="card-item">
-          <input type="radio" name="giveback" id="g5" value="Not right now — maybe later">
-          <label class="card-lbl" for="g5">
-            <div class="card-dot"></div>
-            <div class="card-text">
-              <span class="card-strong">Not right now — maybe later</span>
-              <span class="card-desc">I'm still finding my feet in the community. I'd love to revisit this once I'm settled.</span>
-            </div>
-          </label>
-        </div>
+        <div class="card-item"><input type="radio" name="giveback" id="g1" value="Yes — community volunteering and events"><label class="card-lbl" for="g1"><div class="card-dot"></div><div class="card-text"><span class="card-strong">Yes — local community volunteering and charity events 🤲</span><span class="card-desc">Food banks, women's shelters, community gardens. Showing up together for something bigger than ourselves.</span></div></label></div>
+        <div class="card-item"><input type="radio" name="giveback" id="g2" value="Yes — international causes too"><label class="card-lbl" for="g2"><div class="card-dot"></div><div class="card-text"><span class="card-strong">Yes — locally and internationally 🌍</span><span class="card-desc">I want to give back close to home and support causes in other countries too — especially ones affecting women and girls.</span></div></label></div>
+        <div class="card-item"><input type="radio" name="giveback" id="g3" value="Yes — mentoring other women"><label class="card-lbl" for="g3"><div class="card-dot"></div><div class="card-text"><span class="card-strong">Yes — mentoring and supporting other women 🤍</span><span class="card-desc">I want to show up for the women in this sisterhood who are earlier in their journey than I am.</span></div></label></div>
+        <div class="card-item"><input type="radio" name="giveback" id="g4" value="All of the above"><label class="card-lbl" for="g4"><div class="card-dot"></div><div class="card-text"><span class="card-strong">All of the above — I'm here for all of it ✦</span><span class="card-desc">Count me in for everything.</span></div></label></div>
+        <div class="card-item"><input type="radio" name="giveback" id="g5" value="Not right now — maybe later"><label class="card-lbl" for="g5"><div class="card-dot"></div><div class="card-text"><span class="card-strong">Not right now — maybe later</span><span class="card-desc">I'm still finding my feet. I'd love to revisit this once I'm settled.</span></div></label></div>
       </div>
     </div>
 
-    <div class="field" style="margin-top: 24px;">
-      <label class="field-label">Is there a cause close to your heart that you'd love House of Velara to support? <span class="opt">(optional)</span></label>
-      <div class="field-sub">Women's rights, mental health, education, environment, local community — tell us what matters to you.</div>
+    <div class="field" style="margin-top:24px;">
+      <label class="field-label">Is there a cause close to your heart you'd love us to support? <span class="opt">(optional)</span></label>
       <textarea id="cause" placeholder="Tell me about the cause that lights you up..."></textarea>
     </div>
 
@@ -600,39 +564,29 @@
     </div>
   </div>
 
-  <!-- PAGE 7: LAST THINGS -->
+  <!-- PAGE 7: LAST -->
   <div class="form-page" id="page7">
     <div class="page-eyebrow">Step 7 of 7 — last bit, I promise</div>
     <div class="page-title">The question that matters most.</div>
-    <div class="page-hint">You've been honest all the way through. Don't stop now. This last bit is just between you and me.</div>
+    <div class="page-hint">You've been honest all the way through. Don't stop now.</div>
 
     <div class="field">
       <label class="field-label">What is the one thing you are hoping House of Velara gives you? *</label>
-      <div class="field-sub">Be honest. There is no right answer. I read every single response personally — and some of them have genuinely moved me. This is not a form field. It's the start of a conversation.</div>
-      <textarea id="hope" style="min-height: 130px;" placeholder="Write whatever comes to you. I'll read it." required></textarea>
+      <div class="field-sub">Be honest. There is no right answer. I read every single response personally. This is not a form field. It's the start of a conversation.</div>
+      <textarea id="hope" style="min-height:130px;" placeholder="Write whatever comes to you. I'll read it." required></textarea>
     </div>
 
-    <div class="field" style="margin-top: 8px;">
+    <div class="field">
       <label class="field-label">Is there anything else you want me to know about you? <span class="opt">(optional)</span></label>
-      <div class="field-sub">Something that doesn't fit anywhere else. Something you just wanted to say.</div>
       <textarea id="anything" placeholder="Say whatever you want here. I'm listening."></textarea>
     </div>
 
-    <div class="field" style="margin-top: 32px;">
-      <label class="field-label" style="margin-bottom: 16px;">Before you join, just a few things 🤍</label>
+    <div class="field" style="margin-top:32px;">
+      <label class="field-label" style="margin-bottom:16px;">Before you join, just a few things 🤍</label>
       <div class="consent-list">
-        <div class="consent-row">
-          <input type="checkbox" class="consent-chk" id="c1" required>
-          <div class="consent-txt">I understand that House of Velara is a women-only space built on respect, honesty, and confidentiality. What is shared in this community stays here. I'll honour that — always.</div>
-        </div>
-        <div class="consent-row">
-          <input type="checkbox" class="consent-chk" id="c2" required>
-          <div class="consent-txt">I'm happy to receive emails and WhatsApp messages from House of Velara — personal check-ins, event invites, and the newsletter. I can unsubscribe anytime, no hard feelings.</div>
-        </div>
-        <div class="consent-row">
-          <input type="checkbox" class="consent-chk" id="c3">
-          <div class="consent-txt">I'm okay with my first name, city, Instagram, and LinkedIn (if shared) being visible to other Velaras — and with House of Velara giving me a shout-out on social media to celebrate my joining. Women supporting women — always. <span style="color:var(--rose);font-style:italic;">(Optional)</span></div>
-        </div>
+        <div class="consent-row"><input type="checkbox" class="consent-chk" id="c1" required><div class="consent-txt">I understand that House of Velara is a women-only space built on respect, honesty, and confidentiality. What is shared in this community stays here. I'll honour that — always.</div></div>
+        <div class="consent-row"><input type="checkbox" class="consent-chk" id="c2" required><div class="consent-txt">I'm happy to receive emails and WhatsApp messages from House of Velara — personal check-ins, event invites, and the newsletter. I can unsubscribe anytime, no hard feelings.</div></div>
+        <div class="consent-row"><input type="checkbox" class="consent-chk" id="c3"><div class="consent-txt">I'm okay with my first name, city, Instagram, and LinkedIn being visible to other Velaras — and with House of Velara giving me a shout-out on social. <span style="color:var(--rose);font-style:italic;">(Optional)</span></div></div>
       </div>
     </div>
 
@@ -641,7 +595,7 @@
       <button class="btn-submit" onclick="handleSubmit(event)">I am a Velara — I'm in ✦</button>
     </div>
 
-    <p style="font-size: 12px; color: var(--rose); text-align: center; margin-top: 20px; font-style: italic;">The Circle is completely free. No card, no commitment, no catch. You're joining a sisterhood, not signing up for a service.</p>
+    <p style="font-size:12px;color:var(--rose);text-align:center;margin-top:20px;font-style:italic;">The Circle is completely free. No card, no commitment, no catch.</p>
   </div>
 
   <!-- SUCCESS -->
@@ -651,151 +605,140 @@
     <div class="suc-title">You're home<br>now. <em>Really.</em></div>
     <div class="suc-text">I read your answer. Thank you for being that honest — it's exactly the kind of woman this sisterhood was built for. Your welcome email is on its way right now.</div>
     <div class="suc-steps">
-      <div class="suc-step">
-        <div class="suc-n">1</div>
-        <div class="suc-t">Check your inbox — your welcome email has the link to join our community group. (Check spam too, just in case.)</div>
-      </div>
-      <div class="suc-step">
-        <div class="suc-n">2</div>
-        <div class="suc-t">When you get into the group — say hi. Just your name, your city, and one thing. The women in there are going to love you.</div>
-      </div>
-      <div class="suc-step">
-        <div class="suc-n">3</div>
-        <div class="suc-t">Follow @velara.house on Instagram and TikTok. Your first event invite is coming within the week.</div>
-      </div>
-      <div class="suc-step">
-        <div class="suc-n">4</div>
-        <div class="suc-t">If you shared your Instagram or LinkedIn — keep an eye out. We'll be giving you a shout. Women supporting women. ✦</div>
-      </div>
+      <div class="suc-step" id="ss1"><div class="suc-n">1</div><div class="suc-t">Check your inbox — your welcome email has the link to join our community group. (Check spam too, just in case.)</div></div>
+      <div class="suc-step" id="ss2"><div class="suc-n">2</div><div class="suc-t">When you get into the group — say hi. Just your name, your city, and one thing. The women in there are going to love you.</div></div>
+      <div class="suc-step" id="ss3"><div class="suc-n">3</div><div class="suc-t">Follow <strong style="color:var(--blush);">@thehouseofvelara</strong> on Instagram and TikTok — that's our space for all the fun, the behind-the-scenes, and everything in between. Come find us there. 🤍</div></div>
+      <div class="suc-step" id="ss4"><div class="suc-n">4</div><div class="suc-t">If you shared your Instagram or LinkedIn — keep an eye out. We'll be giving you a shout. Women supporting women. ✦</div></div>
     </div>
+    <a href="https://chat.whatsapp.com/FSFpkbcQd5sG9H1LgEnuCi" target="_blank" rel="noopener" style="
+      display: inline-block;
+      margin-bottom: 36px;
+      background: #25D366;
+      color: white;
+      font-family: 'Lato', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 18px 36px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.3);
+      animation: fadeSlideUp 0.6s ease both 1.4s;
+    " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 24px rgba(37,211,102,0.45)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 20px rgba(37,211,102,0.3)'">
+      💬 &nbsp;Join our WhatsApp Community
+    </a>
     <div class="suc-identity">I am a Velara. ✦</div>
-  </div>
-
-  <div class="foot">
-    <p>House of Velara · houseofvelara.com · Vancouver · Philippines · Spain · @velara.house</p>
   </div>
 
 </div>
 
 <script>
-  let currentPage = 1;
-  const totalPages = 7;
-  const stepLabels = ['ps1','ps2','ps3','ps4','ps5','ps6','ps7'];
+  let cur = 1;
+  const total = 7;
 
-  function updateProgress(page) {
-    const pct = ((page - 1) / (totalPages - 1)) * 100;
-    document.getElementById('progressFill').style.width = pct + '%';
-    stepLabels.forEach((id, i) => {
-      const el = document.getElementById(id);
+  function updateProgress(p) {
+    const pct = ((p-1)/(total-1))*100;
+    document.getElementById('progressFill').style.width = pct+'%';
+    for(let i=1;i<=total;i++){
+      const el = document.getElementById('ps'+i);
       el.classList.remove('active','done');
-      if (i + 1 === page) el.classList.add('active');
-      else if (i + 1 < page) el.classList.add('done');
-    });
+      if(i===p) el.classList.add('active');
+      else if(i<p) el.classList.add('done');
+    }
   }
 
-  function goTo(page) {
-    if (currentPage === 1 && page > 1) {
-      const fn = document.getElementById('firstName').value.trim();
-      const em = document.getElementById('email').value.trim();
-      const ci = document.getElementById('city').value.trim();
-      if (!fn || !em || !ci) { alert('Just need your first name, email, and city to continue 🤍'); return; }
+  function goTo(p) {
+    if(cur===1 && p>1){
+      const fn=document.getElementById('firstName').value.trim();
+      const em=document.getElementById('email').value.trim();
+      const ci=document.getElementById('city').value.trim();
+      if(!fn||!em||!ci){alert('Just need your first name, email, and city to continue 🤍');return;}
     }
-    if (currentPage === 3 && page > 3) {
-      const job = document.getElementById('job').value.trim();
-      if (!job) { alert('Tell me what you do! Just a quick line. 🤍'); return; }
+    if(cur===3 && p>3){
+      if(!document.getElementById('job').value.trim()){alert('Tell me what you do! Just a quick line. 🤍');return;}
     }
-    document.getElementById('page' + currentPage).classList.remove('active');
-    currentPage = page;
-    document.getElementById('page' + currentPage).classList.add('active');
-    updateProgress(currentPage);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    const prev = document.getElementById('page'+cur);
+    prev.style.animation = 'none';
+    prev.classList.remove('active');
+    cur = p;
+    const next = document.getElementById('page'+cur);
+    next.classList.add('active');
+    updateProgress(cur);
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 
-  // ── PASTE YOUR ZAPIER / MAKE WEBHOOK URL HERE ──
+  // ── PASTE YOUR MAKE WEBHOOK URL HERE ──
   const WEBHOOK_URL = 'https://hook.us2.make.com/38w8kil2gilhl8aj13cv8c9f757yjq6u';
 
-  function getChecked(name) {
-    return [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(el => el.value).join(', ');
-  }
-  function getRadio(name) {
-    const el = document.querySelector(`input[name="${name}"]:checked`);
-    return el ? el.value : '';
-  }
+  function getChecked(name){return[...document.querySelectorAll(`input[name="${name}"]:checked`)].map(e=>e.value).join(', ');}
+  function getRadio(name){const e=document.querySelector(`input[name="${name}"]:checked`);return e?e.value:'';}
 
-  async function handleSubmit(e) {
+  async function handleSubmit(e){
     e.preventDefault();
-    const hope = document.getElementById('hope').value.trim();
-    const c1 = document.getElementById('c1').checked;
-    const c2 = document.getElementById('c2').checked;
-    if (!hope) { alert('Please share what you\'re hoping for — I really do read these. ✦'); return; }
-    if (!c1 || !c2) { alert('Please agree to the community values and messages — just the first two checkboxes. 🤍'); return; }
+    const hope=document.getElementById('hope').value.trim();
+    const c1=document.getElementById('c1').checked;
+    const c2=document.getElementById('c2').checked;
+    if(!hope){alert('Please share what you\'re hoping for — I really do read these. ✦');return;}
+    if(!c1||!c2){alert('Please agree to the community values and messages — just the first two checkboxes. 🤍');return;}
 
-    const bdayMonth = document.getElementById('bdayMonth').value;
-    const bdayDay   = document.getElementById('bdayDay').value;
-    const birthday  = (bdayMonth && bdayDay) ? `${bdayMonth} ${bdayDay}` : '';
+    const bdayMonth=document.getElementById('bdayMonth').value;
+    const bdayDay=document.getElementById('bdayDay').value;
+    const birthday=(bdayMonth&&bdayDay)?`${bdayMonth} ${bdayDay}`:'';
 
-    const payload = {
-      // ── Page 1: You
-      first_name:      document.getElementById('firstName').value.trim(),
-      last_name:       document.getElementById('lastName').value.trim(),
-      email:           document.getElementById('email').value.trim(),
-      whatsapp:        document.getElementById('whatsapp').value.trim(),
-      instagram:       document.getElementById('instagram').value.trim(),
-      city:            document.getElementById('city').value.trim(),
+    const payload={
+      first_name:document.getElementById('firstName').value.trim(),
+      last_name:document.getElementById('lastName').value.trim(),
+      email:document.getElementById('email').value.trim(),
+      whatsapp:document.getElementById('whatsapp').value.trim(),
+      instagram:document.getElementById('instagram').value.trim(),
+      city:document.getElementById('city').value.trim(),
       birthday,
-      referral_source: document.getElementById('source').value,
-      // ── Page 2: Life
-      life_stage:      getRadio('lifeStage'),
-      relationship:    getRadio('relStatus'),
-      // ── Page 3: Work
-      job_title:       document.getElementById('job').value.trim(),
-      industry:        document.getElementById('industry').value,
-      linkedin:        document.getElementById('linkedin').value.trim(),
-      work_situation:  getChecked('workSit'),
-      superpower:      document.getElementById('skill').value.trim(),
-      // ── Page 4: Sisterhood
-      drawn_to:        getChecked('drawn'),
-      prev_community:  getRadio('prevCom'),
-      open_to_hosting: getRadio('hosting'),
-      // ── Page 5: Events
-      events_excited:  getChecked('events'),
-      dream_event:     document.getElementById('dreamEvent').value.trim(),
-      // ── Page 6: Giving back
-      giveback:        getRadio('giveback'),
-      fav_cause:       document.getElementById('cause').value.trim(),
-      // ── Page 7: Final
-      biggest_hope:    hope,
-      anything_else:   document.getElementById('anything').value.trim(),
-      consent_community:   c1,
-      consent_comms:       c2,
-      consent_shoutout:    document.getElementById('c3').checked,
-      submitted_at:    new Date().toISOString(),
+      referral_source:document.getElementById('source').value||'',
+      life_stage:getRadio('lifeStage'),
+      relationship:getRadio('relStatus'),
+      job_title:document.getElementById('job').value.trim(),
+      industry:document.getElementById('industry').value||'',
+      linkedin:document.getElementById('linkedin').value.trim(),
+      work_situation:getChecked('workSit'),
+      superpower:document.getElementById('skill').value.trim(),
+      drawn_to:getChecked('drawn'),
+      prev_community:getRadio('prevCom'),
+      open_to_hosting:getRadio('hosting'),
+      events_excited:getChecked('events'),
+      dream_event:document.getElementById('dreamEvent').value.trim(),
+      giveback:getRadio('giveback'),
+      fav_cause:document.getElementById('cause').value.trim(),
+      biggest_hope:hope,
+      anything_else:document.getElementById('anything').value.trim(),
+      consent_community:c1,
+      consent_comms:c2,
+      consent_shoutout:document.getElementById('c3').checked,
+      submitted_at:new Date().toISOString(),
     };
 
-    // Show loading state on button
-    const btn = e.target;
-    const original = btn.textContent;
-    btn.textContent = 'Sending… 🤍';
-    btn.disabled = true;
+    const btn=e.target;
+    btn.textContent='Sending… 🤍';
+    btn.disabled=true;
 
-    try {
-      await fetch(WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-        mode: 'no-cors' // Zapier/Make webhooks don't return CORS headers
-      });
-    } catch (err) {
-      // no-cors means we can't read the response — this is expected
-      // The data still goes through; we proceed to success
-    }
+    try{
+      await fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),mode:'no-cors'});
+    }catch(err){}
 
-    const name = payload.first_name || 'lovely';
+    const name=payload.first_name||'lovely';
     document.getElementById('page7').classList.remove('active');
-    const s = document.getElementById('success');
+    const s=document.getElementById('success');
     s.classList.add('show');
-    document.getElementById('sucName').textContent = name;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    document.getElementById('sucName').textContent=name;
+    window.scrollTo({top:0,behavior:'smooth'});
+
+    // Staggered success step animations
+    [1,2,3,4].forEach((n,i)=>{
+      setTimeout(()=>{
+        const el=document.getElementById('ss'+n);
+        if(el) el.classList.add('visible');
+      },400+(i*200));
+    });
   }
 
   updateProgress(1);
